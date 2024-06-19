@@ -6,7 +6,9 @@
       terminal = "foot";
       startup = [];
 
-      bars = [];
+      bars = [
+        {}
+      ];
 
       focus = {
         followMouse = false;
@@ -60,4 +62,7 @@
       output * bg ${../../wallpaper} fill
     '';
   };
+
+  programs.swaylock.enable = true;
+  services.mako.enable = true;
 }
