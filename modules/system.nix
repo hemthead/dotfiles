@@ -53,7 +53,7 @@
     dates = lib.mkDefault "weekly";
     options = lib.mkDefault "--delete-older-than 2d";
   };
-  nix.optimize = {
+  nix.optimise = {
     automatic = lib.mkDefault true;
     dates = lib.mkDefault [ "weekly" ];
   };
