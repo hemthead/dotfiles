@@ -30,22 +30,19 @@
     layout = "us";
     xkbVariant = "";
   };
+  
+  security.pam.services.swaylock = {}; # let swaylock work
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
 #  services.power-profiles-daemon.enable = true;
   security.polkit.enable = true;
-
-  services = {
-#    dbus.packages
-#    geoclue2.enable = true;
-
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
   };
 
   nix.gc = {
@@ -78,6 +75,8 @@
     vifm
     hyfetch
     lm_sensors
+    pamixer
+    emptty
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
