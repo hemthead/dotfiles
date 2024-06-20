@@ -77,6 +77,7 @@
     lm_sensors
     pamixer
     emptty
+    links2
   ];
 
   hardware.opengl.enable = true;
