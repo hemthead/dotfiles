@@ -31,9 +31,18 @@
     xkbVariant = "";
   };
 
+  fonts.packages = with pkgs; {
+    noto-fonts
+    font-awesome
+  };
+
   services.displayManager = {
     enable = true;
     execCmd = "${pkgs.emptty}/bin/emptty";
+    environment = {
+      TTY_NUMBER = "1";
+      DEFAULT_USER = "johndr";
+    };
   };
   
   security.pam.services.swaylock = {}; # let swaylock work
@@ -48,6 +57,8 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+
+    #jack.enable = true;
   };
 
   nix.gc = {
