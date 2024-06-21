@@ -31,10 +31,10 @@
     xkbVariant = "";
   };
 
-  fonts.packages = with pkgs; {
+  fonts.packages = with pkgs; [
     noto-fonts
     font-awesome
-  };
+  ];
 
   services.displayManager = {
     enable = true;
