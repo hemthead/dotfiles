@@ -30,6 +30,11 @@
     layout = "us";
     xkbVariant = "";
   };
+
+  services.displayManager = {
+    enable = true;
+    execCmd = "${pkgs.emptty}/bin/emptty";
+  };
   
   security.pam.services.swaylock = {}; # let swaylock work
 
