@@ -38,11 +38,7 @@
 
   services.displayManager = {
     enable = true;
-    execCmd = "${pkgs.emptty}/bin/emptty";
-    environment = {
-      TTY_NUMBER = "1";
-      DEFAULT_USER = "johndr";
-    };
+    execCmd = "${pkgs.sway}/bin/sway";
   };
   
   security.pam.services.swaylock = {}; # let swaylock work
