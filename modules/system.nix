@@ -38,8 +38,13 @@
 
   services.displayManager = {
     enable = true;
-    execCmd = "${pkgs.sway}/bin/sway";
+    execCmd = "${pkgs.emptty}/bin/emptty";
   };
+  environment.etc."emptty/conf".text = ''
+    TTY_NUMBER="1"
+    DEFAULT_USER="johndr"
+    VERTICAL_SELECTION
+  '';
   
   security.pam.services.swaylock = {}; # let swaylock work
 
