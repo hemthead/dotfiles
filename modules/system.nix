@@ -26,9 +26,9 @@
 
   # Configure keymap in X11
   # delete when wayland?
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    Variant = "";
   };
 
   fonts.packages = with pkgs; [

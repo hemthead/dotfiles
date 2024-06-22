@@ -67,4 +67,14 @@
 
   programs.swaylock.enable = true;
   services.mako.enable = true;
+
+  services.swayidle = let lockCmd = "${pkgs.swaylock}/bin/swaylock"; in {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = lockCmd; }
+    ];
+    timeouts = [
+      { timeout = 60; command = lockCmd; };
+    ];
+  };
 }
