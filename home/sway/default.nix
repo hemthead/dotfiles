@@ -51,8 +51,8 @@
         "XF86AudioLowerVolume" = "exec pamixer -d 5";
         "XF86AudioMute" = "exec pamixer -t";
         "XF86AudioMicMute" = "exec pamixer --default-source -t";
-	"XF86MonBrightnessDown" = "exec light -U 10";
-	"XF86MonBrightnessUp" = "exec light -A 10";
+	"XF86MonBrightnessDown" = "exec sudo light -U 10";
+	"XF86MonBrightnessUp" = "exec sudo light -A 10";
 
 	"${modifier}+x" = "mode 'exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]'";
       };

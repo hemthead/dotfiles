@@ -41,7 +41,6 @@
     settings = {
       default_session = {
         command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
-	user = "johndr";
       };
     };
   };
