@@ -28,7 +28,7 @@
   # delete when wayland?
   services.xserver.xkb = {
     layout = "us";
-    Variant = "";
+    variant = "";
   };
 
   fonts.packages = with pkgs; [
