@@ -74,7 +74,7 @@
       { event = "before-sleep"; command = lockCmd; }
     ];
     timeouts = [
-      { timeout = 60; command = lockCmd; };
+      { timeout = 60; command = lockCmd; }
     ];
   };
 }
