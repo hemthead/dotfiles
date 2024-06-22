@@ -36,16 +36,16 @@
     font-awesome
   ];
 
-  services.displayManager = {
+  services.greetd = {
     enable = true;
-    execCmd = "${pkgs.emptty}/bin/emptty";
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
+	user = "johndr";
+      };
+    };
   };
-  environment.etc."emptty/conf".text = ''
-    TTY_NUMBER="1"
-    DEFAULT_USER="johndr"
-    VERTICAL_SELECTION
-  '';
-  
+
   security.pam.services.swaylock = {}; # let swaylock work
 
   sound.enable = true;
@@ -76,8 +76,10 @@
   users.users.johndr = {
     isNormalUser = true;
     description = "John Douglas Reed";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
   };
+
+  programs.light.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
