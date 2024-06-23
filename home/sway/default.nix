@@ -75,7 +75,8 @@
   programs.swaylock = {
     enable = true;
     settings = {
-      color = "808080";
+      color = "000000";
+      image = "${../../../wallpaper}";
     };
   };
 
@@ -88,7 +89,7 @@
     ];
     timeouts = [
       { timeout = 60; command = "${pkgs.swaylock}/bin/swaylock"; }
-      { timeout = 90; command = "${pkgs.systemd}/bin/systemctl suspend"; }
+      { timeout = 90; command = "pkill --newest swaylock; ${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
 }
