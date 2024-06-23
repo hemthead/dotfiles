@@ -90,7 +90,7 @@
     ];
     timeouts = [
       { timeout = 60; command = "${pkgs.systemd}/bin/loginctl lock-session"; }
-      { timeout = 70; command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'"; resume = "${pkgs.sway}/bin/swaymsg 'output * dpms on'"; }
+      { timeout = 70; command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'"; resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'"; }
       { timeout = 90; command = "pkill swaylock; ${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
