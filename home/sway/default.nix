@@ -65,6 +65,13 @@
     '';
   };
 
+  home.packages = with pkgs; [
+    swaylock
+    swayidle
+    wl-clipboard
+    mako
+  ];
+
   programs.swaylock = {
     enable = true;
     settings = {
