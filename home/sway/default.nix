@@ -65,16 +65,23 @@
     '';
   };
 
-  programs.swaylock.enable = true;
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "808080";
+    }
+  };
+
   services.mako.enable = true;
 
-  services.swayidle = let lockCmd = "${pkgs.swaylock}/bin/swaylock"; in {
+  services.swayidle = {
     enable = true;
     events = [
-      { event = "before-sleep"; command = lockCmd; }
+      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock"; }
     ];
     timeouts = [
-      { timeout = 60; command = lockCmd; }
+      { timeout = 60; command = "${pkgs.swaylock}/bin/swaylock"; }
+      { timeout = 90; command = "${pkgs.systemd}/bin/systemctl suspend"; }
     ];
   };
 }
