@@ -69,7 +69,7 @@
     enable = true;
     settings = {
       color = "808080";
-    }
+    };
   };
 
   services.mako.enable = true;
