@@ -36,6 +36,8 @@
     font-awesome
   ];
 
+  boot.loader.systemd-boot.configurationLimit = 10;
+
   services.greetd = {
     enable = true;
     settings = {
@@ -66,10 +68,7 @@
     dates = lib.mkDefault "weekly";
     options = lib.mkDefault "--delete-older-than 2d";
   };
-  nix.optimise = {
-    automatic = lib.mkDefault true;
-    dates = lib.mkDefault [ "weekly" ];
-  };
+  nix.settings.auto-optimise-store = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.johndr = {
