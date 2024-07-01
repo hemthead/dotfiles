@@ -8,7 +8,7 @@
       lightness = 0.65;
       color_align = {
         mode = "custom";
-	custom_colorss = {
+	custom_colors = {
 	  "2" = 0;
 	  "1" = 1;
         };
