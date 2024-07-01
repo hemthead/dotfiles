@@ -18,9 +18,11 @@
 
       gaps.inner = 10;
 
-      bars = [{
-	  statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs 2> /tmp/i3status-rust.log";
-      }];
+      bars = [
+        {
+	  statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml 2> /tmp/i3status-rust.log";
+        }
+      ];
 
       modes = {
         resize = {
