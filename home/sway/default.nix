@@ -1,14 +1,14 @@
 { pkgs, lib, config, ... }: {
+  imports = [
+    ./i3status-rust
+  ];
+
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
       modifier = "Mod4"; # super
       terminal = "foot";
       startup = [];
-
-      bars = [
-        {}
-      ];
 
       focus = {
         followMouse = false;
@@ -17,6 +17,10 @@
       };
 
       gaps.inner = 10;
+
+      bars = [{
+	  statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs 2> /tmp/i3status-rust.log";
+      }];
 
       modes = {
         resize = {
@@ -71,6 +75,7 @@
     swaybg
     wl-clipboard
     mako
+    shotman
   ];
 
   programs.swaylock = {
