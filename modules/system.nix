@@ -32,8 +32,7 @@
   };
 
   fonts.packages = with pkgs; [
-    noto-fonts
-    font-awesome
+    dejavu_fonts
   ];
 
   boot.loader.systemd-boot.configurationLimit = 10;
