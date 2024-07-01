@@ -1,6 +1,9 @@
 { pkgs, lib, config, ... }: {
   imports = [
     ./i3status-rust
+
+    ./swaylock.nix
+    ./swayidle.nix
   ];
 
   wayland.windowManager.sway = {
@@ -72,34 +75,11 @@
   };
 
   home.packages = with pkgs; [
-    swaylock
-    swayidle
     swaybg
     wl-clipboard
     mako
     shotman
   ];
 
-  programs.swaylock = {
-    enable = true;
-    settings = {
-      color = "000000";
-      image = "${../../wallpaper}";
-    };
-  };
-
   services.mako.enable = true;
-
-  services.swayidle = {
-    enable = true;
-    events = [
-      { event = "lock"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
-      { event = "before-sleep"; command = "${pkgs.systemd}/bin/loginctl lock-session"; }
-    ];
-    timeouts = [
-      { timeout = 60*3; command = "${pkgs.systemd}/bin/loginctl lock-session"; }
-      { timeout = 60*1; command = "${pkgs.sway}/bin/swaymsg 'output * dpms off'"; resumeCommand = "${pkgs.sway}/bin/swaymsg 'output * dpms on'"; }
-      { timeout = 60*10; command = "pkill swaylock; ${pkgs.systemd}/bin/systemctl suspend"; }
-    ];
-  };
 }
