@@ -1,9 +1,8 @@
 { pkgs, lib, config, ... }: {
   imports = [
-    ./i3status-rust
-
     ./swaylock.nix
     ./swayidle.nix
+    ./i3status-rust.nix
   ];
 
   wayland.windowManager.sway = {

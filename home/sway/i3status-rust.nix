@@ -2,7 +2,7 @@
   programs.i3status-rust.enable = true;
   programs.i3status-rust.bars.default = {
     blocks = [
-      { block = "focused_window"; format = " $title "; }
+      { block = "focused_window"; format = " $title |"; }
       { block = "sound"; format = " Vol: {$volume|muted} "; }
       { block = "backlight"; format = " Light: $brightness "; }
       { block = "memory"; format = " Mem: $mem_used_percents "; }
