@@ -13,6 +13,14 @@
       terminal = "foot";
       startup = [];
 
+      colors.focused = {
+        background = "#A020F0"; # X11 purple
+        border = "#663399"; # Rebecca purple
+        childBorder = "#A020F0"; # X11 purple
+        indicator = "#800080"; # HTML/CSS purple
+        text = "#ffffff";
+      };
+
       focus = {
         followMouse = false;
 	mouseWarping = false;
@@ -23,7 +31,13 @@
 
       bars = [
         {
+	  id = "default";
 	  statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml 2> /tmp/i3status-rust.log";
+	  colors.focusedWorkspace = with colors.focused; {
+	    background = background;
+	    border = border;
+	    text = text;
+	  };
         }
       ];
 
