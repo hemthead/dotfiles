@@ -1,6 +1,7 @@
 {
   imports = [
     ./custom
+    ./vifm
 
     ./git.nix
     ./foot.nix

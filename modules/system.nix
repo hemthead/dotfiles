@@ -91,12 +91,11 @@
     vifm
     hyfetch
     lm_sensors
-    pamixer
-    emptty
     links2
+    timg
   ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

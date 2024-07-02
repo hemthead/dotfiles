@@ -69,12 +69,12 @@
       };
       
       keybindings = let modifier = config.wayland.windowManager.sway.config.modifier; in lib.mkOptionDefault {
-        "XF86AudioRaiseVolume" = "exec pamixer -i 5";
-        "XF86AudioLowerVolume" = "exec pamixer -d 5";
-        "XF86AudioMute" = "exec pamixer -t";
-        "XF86AudioMicMute" = "exec pamixer --default-source -t";
-	"XF86MonBrightnessDown" = "exec light -U 10";
-	"XF86MonBrightnessUp" = "exec light -A 10";
+        "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
+        "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+        "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+	"XF86MonBrightnessDown" = "exec light -U 5";
+	"XF86MonBrightnessUp" = "exec light -i 5";
 
 	"${modifier}+x" = "mode 'exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]'";
       };
