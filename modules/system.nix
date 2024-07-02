@@ -76,8 +76,6 @@
     extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 
-  programs.light.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -93,6 +91,7 @@
     lm_sensors
     links2
     timg
+    brightnessctl
   ];
 
   hardware.graphics.enable = true;

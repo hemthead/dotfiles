@@ -73,8 +73,8 @@
         "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
         "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
         "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-	"XF86MonBrightnessDown" = "exec light -U 5";
-	"XF86MonBrightnessUp" = "exec light -i 5";
+	"XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -e s 5%-";
+	"XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -e s +5%";
 
 	"${modifier}+x" = "mode 'exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]'";
       };
