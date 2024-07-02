@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     vifm
+    oculante
   ];
 
   xdg.configFile."vifm/vifmrc".text = ''
@@ -57,25 +58,37 @@
       \ {Open project in Krita}
       \ krita %f &,
 
+    " audio
     filextype {*.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,
       \*.aac,*.mpga},<audio/*>
       \ {Play using mpv}
-      \ mpv %f %s &,
+      \ mpv --no-video %f &,
+
+    " video
+    filetype {*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
+      \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
+      \*.as[fx]},<video/*>
+      \ {View in mpv}
+      \ mpv %f &,
     filetype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
       \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
       \*.as[fx]
       \ {View in timg}
-      \ timg -ph -V --title --center --clear %f; read -n1 -s -r -p "Press any key to return",
+      \ timg -pq -V --title --center --clear %f; read -n1 -s -r -p "Press any key to return",
     fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,
       \*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,
       \*.as[fx]
-      \ timg -pq -V --color8 --frames=1 -g%pwx%ph --center --clear=every %f,
+      \ timg -pq -V --color8 -g%pwx%ph --title --center --frames=1 %f,
 
+    " image
+    filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
+      \ {View in oculante}
+      \ oculante %f &,
     filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
       \ {View in timg}
       \ timg -ps -E --title --center --clear %f; read -n1 -s -r -p "Press any key to return",
     fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-      \ timg -pq -g%pwx%ph --clear --center %f,
+      \ timg -pq -g%pwx%ph --frames=1 --title --center --clear %f,
 
     filextype {*.xhtml,*.html,*htm),<text/html>
       \ {Open with firefox}

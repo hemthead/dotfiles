@@ -91,6 +91,7 @@
     lm_sensors
     links2
     timg
+    mpv
     brightnessctl
   ];
 
