@@ -3,6 +3,7 @@
     ./swaylock.nix
     ./swayidle.nix
     ./i3status-rust.nix
+    ./mako.nix
   ];
 
   wayland.windowManager.sway = {
@@ -75,6 +76,9 @@
         "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 	"XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -e s 5%-";
 	"XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -e s +5%";
+	"${modifier}+p" = "exec ${pkgs.shotman}/bin/shotman --capture window";
+	"${modifier}+Shift+p" = "exec ${pkgs.shotman}/bin/shotman --capture region";
+	"${modifier}+Ctrl+p" = "exec ${pkgs.shotman}/bin/shotman --capture output";
 
 	"${modifier}+x" = "mode 'exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]'";
       };
@@ -93,6 +97,4 @@
     mako
     shotman
   ];
-
-  services.mako.enable = true;
 }
