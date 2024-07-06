@@ -1,1 +1,1 @@
-{inputs = [../default.nix];}
+{ inputs = [ ../default.nix ]; }

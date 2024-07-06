@@ -1,9 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
-  imports = [./sway ./programs];
+  imports = [ ./sway ./programs ];
 
   home = {
     username = "johndr";

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.hyfetch = {
     enable = true;
     settings = {
@@ -12,12 +12,12 @@
           "2" = 0;
           "1" = 1;
         };
-        fore_back = [];
+        fore_back = [ ];
       };
       backend = "neofetch";
       args = null;
       distro = null;
-      pride_month_shown = [];
+      pride_month_shown = [ ];
       pride_month_disable = false;
     };
   };

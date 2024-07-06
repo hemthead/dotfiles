@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [swayidle];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ swayidle ];
 
   services.swayidle = {
     enable = true;

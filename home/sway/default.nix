@@ -1,17 +1,16 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
+{ pkgs
+, lib
+, config
+, ...
 }: {
-  imports = [./swaylock.nix ./swayidle.nix ./i3status-rust.nix test];
+  imports = [ ./swaylock.nix ./swayidle.nix ./i3status-rust.nix ];
 
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
       modifier = "Mod4"; # super
       terminal = "foot";
-      startup = [];
+      startup = [ ];
 
       colors.focused = {
         background = "#A020F0"; # X11 purple
@@ -69,9 +68,10 @@
         };
       };
 
-      keybindings = let
-        modifier = config.wayland.windowManager.sway.config.modifier;
-      in
+      keybindings =
+        let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in
         lib.mkOptionDefault {
           "XF86AudioRaiseVolume" = "exec pamixer -i 5";
           "XF86AudioLowerVolume" = "exec pamixer -d 5";
@@ -91,7 +91,7 @@
     '';
   };
 
-  home.packages = with pkgs; [swaybg wl-clipboard mako shotman];
+  home.packages = with pkgs; [ swaybg wl-clipboard mako shotman ];
 
   services.mako.enable = true;
 }

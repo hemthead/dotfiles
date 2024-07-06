@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.i3status-rust.enable = true;
   programs.i3status-rust.bars.default = {
     blocks = [

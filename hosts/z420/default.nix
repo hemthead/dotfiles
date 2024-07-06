@@ -1,10 +1,9 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }: {
   imports = [
     ../../modules/system.nix # import basic every-config stuff
@@ -28,7 +27,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = [ "amdgpu" ];
   boot.loader.grub = {
     enable = true;
     device = "nodev";
@@ -40,9 +39,9 @@
     rocmPackages.clr.icd # OpenCL
     amdvlk
   ];
-  hardware.graphics.extraPackages32 = with pkgs; [driversi686Linux.amdvlk];
+  hardware.graphics.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
 
-  environment.variables = {ROC_ENABLE_PRE_VEGA = "1";};
+  environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
   programs.steam = {
     enable = true;

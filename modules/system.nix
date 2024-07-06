@@ -1,13 +1,12 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   # get flakes set up from the start this time!
-  nix.settings.experimental-features = ["nix-command" "flakes"]; # Set your time zone.
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Set your time zone.
   time.timeZone = "America/New_York"; # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -27,7 +26,7 @@
     variant = "";
   };
 
-  fonts.packages = with pkgs; [dejavu_fonts];
+  fonts.packages = with pkgs; [ dejavu_fonts ];
 
   boot.loader.systemd-boot.configurationLimit = 10;
 
@@ -40,7 +39,7 @@
     };
   };
 
-  security.pam.services.swaylock = {}; # let swaylock work
+  security.pam.services.swaylock = { }; # let swaylock work
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -72,7 +71,7 @@
   users.users.johndr = {
     isNormalUser = true;
     description = "John Douglas Reed";
-    extraGroups = ["networkmanager" "wheel" "video"];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
   };
 
   # Allow unfree packages
