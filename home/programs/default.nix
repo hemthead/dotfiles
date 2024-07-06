@@ -1,6 +1,7 @@
 {
   imports = [
     ./custom
+    ./neovim
 
     ./git.nix
     ./foot.nix

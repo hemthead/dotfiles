@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   programs.git = {
     enable = true;
 
@@ -8,8 +8,6 @@
     signing.key = "/home/johndr/.ssh/id_ed25519.pub";
     signing.signByDefault = true;
 
-    extraConfig = {
-      gpg.format = "ssh";
-    };
+    extraConfig = {gpg.format = "ssh";};
   };
 }

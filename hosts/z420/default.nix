@@ -16,7 +16,7 @@
   #boot.loader.systemd-boot.enable = true; # overloaded by secure-boot stuff
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixtop"; # Define your hostname.
+  networking.hostName = "z420"; # Define your hostname.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -24,6 +24,31 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
+
+  boot.initrd.kernelModules = ["amdgpu"];
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    useOSProber = true;
+    configurationLimit = 5;
+  };
+
+  hardware.graphics.extraPackages = with pkgs; [
+    rocmPackages.clr.icd # OpenCL
+    amdvlk
+  ];
+  hardware.graphics.extraPackages32 = with pkgs; [driversi686Linux.amdvlk];
+
+  environment.variables = {ROC_ENABLE_PRE_VEGA = "1";};
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
