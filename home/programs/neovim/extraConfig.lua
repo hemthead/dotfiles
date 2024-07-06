@@ -34,8 +34,8 @@ cmp.setup({
     { name = "nvim_lsp" },
     { name = "vsnip" },
   }, {
-    { name = "buffer"},
-    { name = "path" },
+    { name = "buffer" },
+    { name = "path"  },
   })
 })
 
