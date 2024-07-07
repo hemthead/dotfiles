@@ -1,17 +1,14 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ pkgs, lib, ... }: {
+{ pkgs
+, lib
+, ...
+}: {
   # get flakes set up from the start this time!
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
+  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Set your time zone.
+  time.timeZone = "America/New_York"; # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -22,18 +19,14 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
-  };
-
-  # Configure keymap in X11
+  }; # Configure keymap in X11
   # delete when wayland?
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
 
-  fonts.packages = with pkgs; [
-    dejavu_fonts
-  ];
+  fonts.packages = with pkgs; [ dejavu_fonts ];
 
   boot.loader.systemd-boot.configurationLimit = 10;
 
@@ -46,11 +39,11 @@
     };
   };
 
-  security.pam.services.swaylock = {}; # let swaylock work
+  security.pam.services.swaylock = { }; # let swaylock work
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-#  services.power-profiles-daemon.enable = true;
+  #  services.power-profiles-daemon.enable = true;
   security.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -60,6 +53,11 @@
     pulse.enable = true;
 
     #jack.enable = true;
+  };
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
   };
 
   nix.gc = {
@@ -95,7 +93,19 @@
     brightnessctl
   ];
 
-  hardware.graphics.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      # put dynamic libraries here (?)
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -123,5 +133,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

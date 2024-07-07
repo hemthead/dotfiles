@@ -1,5 +1,1 @@
-{ pkgs, ... }: {
-  home.packages = [
-    (pkgs.callPackage ./do-rebuild.nix { })
-  ]; 
-}
+{ pkgs, ... }: { home.packages = [ (pkgs.callPackage ./do-rebuild.nix { }) ]; }
