@@ -33,7 +33,7 @@
 
     plugins.lightline = {
       enable = true;
-      colorscheme = "powerline";
+      colorscheme = "everforest";
     };
 
     plugins.cmp.enable = true;
