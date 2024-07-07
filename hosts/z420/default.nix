@@ -43,6 +43,14 @@
 
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
+  virtualisation.virtualbox = {
+    host.enable = true;
+    # host.enableExtensionPack = true;
+    guest.enable = true;
+    guest.dragAndDrop = true;
+  };
+  users.extraGroups.vboxusers.members = [ "johndr" ];
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;

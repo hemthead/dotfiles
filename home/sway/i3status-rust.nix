@@ -13,6 +13,7 @@
       {
         block = "backlight";
         format = " Light: $brightness ";
+        missing_format = "";
       }
       {
         block = "memory";
@@ -27,6 +28,7 @@
         format = " Bat: $percentage ";
         full_format = " Bat: Full ";
         empty_format = " Bat: Empty ";
+        missing_format = "";
         good = 85;
         info = 60;
         warning = 30;
@@ -34,7 +36,7 @@
       }
       {
         block = "disk_space";
-        info_type = "used";
+        info_type = "available";
         format = " Disk: $used/$total ";
       }
       {
