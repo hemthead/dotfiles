@@ -68,19 +68,6 @@
         };
       };
 
-<<<<<<< HEAD
-      keybindings = let modifier = config.wayland.windowManager.sway.config.modifier; in lib.mkOptionDefault {
-        "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
-        "XF86AudioLowerVolume" = "exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-";
-        "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
-	"XF86MonBrightnessDown" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -e s 5%-";
-	"XF86MonBrightnessUp" = "exec ${pkgs.brightnessctl}/bin/brightnessctl -e s +5%";
-	"${modifier}+p" = "exec ${pkgs.shotman}/bin/shotman --capture window";
-	"${modifier}+Shift+p" = "exec ${pkgs.shotman}/bin/shotman --capture region";
-	"${modifier}+Ctrl+p" = "exec ${pkgs.shotman}/bin/shotman --capture output";
-    };
-=======
       keybindings =
         let
           modifier = config.wayland.windowManager.sway.config.modifier;
@@ -95,7 +82,6 @@
 
           "${modifier}+x" = "mode 'exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]'";
         };
->>>>>>> 81d5ebbf52db6acc56e1b09d3007fc549fefc761
 
       defaultWorkspace = "workspace number 1";
     };
@@ -105,11 +91,5 @@
     '';
   };
 
-<<<<<<< HEAD
   home.packages = with pkgs; [ swaybg wl-clipboard shotman ];
-=======
-  home.packages = with pkgs; [ swaybg wl-clipboard mako shotman ];
-
-  services.mako.enable = true;
->>>>>>> 81d5ebbf52db6acc56e1b09d3007fc549fefc761
 }
