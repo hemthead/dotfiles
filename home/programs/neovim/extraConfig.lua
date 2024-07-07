@@ -4,6 +4,7 @@ local lspconfig = require("lspconfig")
 lspconfig.clangd.setup {}
 lspconfig.rust_analyzer.setup {}
 lspconfig.nil_ls.setup {}
+lspconfig.pyright.setup{}
 
 require("fidget").setup()
 
