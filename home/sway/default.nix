@@ -73,13 +73,13 @@
           modifier = config.wayland.windowManager.sway.config.modifier;
         in
         lib.mkOptionDefault {
-          "XF86AudioRaiseVolume" = "exec pamixer -i 5";
-          "XF86AudioLowerVolume" = "exec pamixer -d 5";
-          "XF86AudioMute" = "exec pamixer -t";
-          "XF86AudioMicMute" = "exec pamixer --default-source -t";
+          "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+          "XF86AudioLowerVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-";
+          "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
-          "XF86MonBrightnessDown" = "exec light -U 10";
-          "XF86MonBrightnessUp" = "exec light -A 10";
+          "XF86MonBrightnessUp" = "exec brightnessctl set -e +5%";
+          "XF86MonBrightnessDown" = "exec brightnessctl set -e 5%-";
 
           "${modifier}+p" = "exec shotman --capture window";
           "${modifier}+Shift+p" = "exec shotman --capture region";

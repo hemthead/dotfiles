@@ -1,6 +1,7 @@
 { pkgs, config, ... }: {
   home.packages = with pkgs; [ mako ];
-  services.mako = { # let colors = wayland.windowManager.sway.config.colors; in {
+  services.mako = {
+    # let colors = wayland.windowManager.sway.config.colors; in {
     enable = true;
     # FF's for alpha
     backgroundColor = "${config.wayland.windowManager.sway.config.colors.focused.background}FF";
