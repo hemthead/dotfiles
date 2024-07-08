@@ -5,7 +5,7 @@
   imports = [ nixvim.homeManagerModules.nixvim ];
 
   # install LSPs on a per project basis with nix shell?
-  home.packages = with pkgs; [ nil rust-analyzer clang ];
+  home.packages = with pkgs; [ nil ];
 
   programs.nixvim = {
     enable = true;
