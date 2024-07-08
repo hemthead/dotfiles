@@ -17,7 +17,7 @@
       }
       {
         block = "memory";
-        format = " Mem: $mem_used_percents ";
+        format = " Mem: $mem_used/$mem_total ";
       }
       {
         block = "cpu";

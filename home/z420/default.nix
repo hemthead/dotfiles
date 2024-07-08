@@ -11,6 +11,7 @@
     krita
     blender
     olive-editor
+    godot_4
   ];
 
   programs.obs-studio = {
