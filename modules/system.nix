@@ -80,6 +80,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    man-pages
+    man-pages-posix
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
@@ -92,6 +94,9 @@
     mpv
     brightnessctl
   ];
+
+  # moar man pages
+  documentation.dev.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
