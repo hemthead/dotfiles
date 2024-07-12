@@ -35,12 +35,29 @@
     configurationLimit = 5;
   };
 
+  # Configurations for AMDGPU and ROCm setup
+
   hardware.graphics.extraPackages = with pkgs; [
     rocmPackages.clr.icd # OpenCL
-    amdvlk
+    rocmPackages.clr
+    rocmPackages.rocminfo
+    rocmPackages.rocm-runtime
   ];
-  hardware.graphics.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
 
+  # Some programs hard-code the path to HIP
+  systemd.tmpfiles.rules = ["L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}"];
+
+  hardware.amdgpu = {
+    opencl.enable = true;
+    initrd.enable = true;
+    amdvlk = {
+      enable = true;
+      support32Bit.enable = true;
+      supportExperimental.enable = true;
+    };
+  };
+
+  # OpenCL disabled on 500 series cards by default
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
   virtualisation.virtualbox = {
