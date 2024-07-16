@@ -48,20 +48,20 @@
       openOnSetup = true;
       openOnSetupFile = true;
       
-      renderer.icons.show = {
-        folder = false;
-        folderArrow = true;
-        file = false;
-      };
-      renderer.icons.glyphs.folder = {
-        arrowClosed = "▶";
-        arrowOpen = "▼";
-      };
-      renderer.icons.glyphs.git = {
-        unmerged = "⚑";
-        deleted = "☓";
-      };
-      renderer.indentMarkers.enable = true;
+#      renderer.icons.show = {
+#        folder = false;
+#        folderArrow = true;
+#        file = true;
+#      };
+#      renderer.icons.glyphs.folder = {
+#        arrowClosed = "▶";
+#        arrowOpen = "▼";
+#      };
+#      renderer.icons.glyphs.git = {
+#        unmerged = "⚑";
+#        deleted = "☓";
+#      };
+#      renderer.indentMarkers.enable = false;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
