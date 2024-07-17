@@ -43,25 +43,12 @@
     plugins.cmp-path.enable = true;
     plugins.cmp-cmdline.enable = true;
     
+    plugins.treesitter.enable = true;
+
     plugins.nvim-tree = {
       enable = true;
       openOnSetup = true;
       openOnSetupFile = true;
-      
-#      renderer.icons.show = {
-#        folder = false;
-#        folderArrow = true;
-#        file = true;
-#      };
-#      renderer.icons.glyphs.folder = {
-#        arrowClosed = "▶";
-#        arrowOpen = "▼";
-#      };
-#      renderer.icons.glyphs.git = {
-#        unmerged = "⚑";
-#        deleted = "☓";
-#      };
-#      renderer.indentMarkers.enable = false;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
