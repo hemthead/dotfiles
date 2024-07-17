@@ -28,8 +28,27 @@
       tabstop = 2;
     };
 
+    keymaps = [
+      {
+        # open a terminal panel and resize it
+        action.__raw = ''
+        function()
+          vim.api.nvim_open_win(0, true, {
+            split = 'below',
+            height = 10,
+            win = 0
+          })
+          vim.cmd("terminal")
+        end
+        '';
+        key = "<C-`>";
+        mode = [ "n" ];
+      }
+    ];
+
     # colorscheme = "slate";
     colorschemes.everforest.enable = true;
+    # maybe do some alpha-seethrough stuff here?
 
     plugins.lightline = {
       enable = true;
