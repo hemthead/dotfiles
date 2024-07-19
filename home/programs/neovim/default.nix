@@ -39,6 +39,7 @@
             win = 0
           })
           vim.cmd("terminal")
+          vim.cmd("set winfixheight")
         end
         '';
         key = "<C-`>";
