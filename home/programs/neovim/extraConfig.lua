@@ -6,6 +6,7 @@ lspconfig.rust_analyzer.setup {}
 lspconfig.nil_ls.setup {}
 lspconfig.pyright.setup {}
 lspconfig.lua_ls.setup {}
+lspconfig.zls.setup {}
 
 require("fidget").setup()
 
