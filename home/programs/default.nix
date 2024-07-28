@@ -8,5 +8,6 @@
     ./foot.nix
     ./firefox.nix
     ./hyfetch.nix
+    ./betterbird.nix
   ];
 }
