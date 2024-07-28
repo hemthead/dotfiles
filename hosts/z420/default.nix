@@ -45,7 +45,7 @@
   ];
 
   # Some programs hard-code the path to HIP
-  systemd.tmpfiles.rules = ["L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}"];
+  systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}" ];
 
   hardware.amdgpu = {
     opencl.enable = true;
@@ -60,13 +60,13 @@
   # OpenCL disabled on 500 series cards by default
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
-#  virtualisation.virtualbox = {
-#    host.enable = true;
-#    # host.enableExtensionPack = true;
-#    guest.enable = true;
-#    guest.dragAndDrop = true;
-#  };
-#  users.extraGroups.vboxusers.members = [ "johndr" ];
+  #  virtualisation.virtualbox = {
+  #    host.enable = true;
+  #    # host.enableExtensionPack = true;
+  #    guest.enable = true;
+  #    guest.dragAndDrop = true;
+  #  };
+  #  users.extraGroups.vboxusers.members = [ "johndr" ];
 
   programs.steam = {
     enable = true;

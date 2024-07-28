@@ -32,15 +32,15 @@
       {
         # open a terminal panel and resize it
         action.__raw = ''
-        function()
-          vim.api.nvim_open_win(0, true, {
-            split = 'below',
-            height = 10,
-            win = 0
-          })
-          vim.cmd("terminal")
-          vim.cmd("set winfixheight")
-        end
+          function()
+            vim.api.nvim_open_win(0, true, {
+              split = 'below',
+              height = 10,
+              win = 0
+            })
+            vim.cmd("terminal")
+            vim.cmd("set winfixheight")
+          end
         '';
         key = "<C-`>";
         mode = [ "n" ];
@@ -62,7 +62,7 @@
     plugins.cmp-buffer.enable = true;
     plugins.cmp-path.enable = true;
     plugins.cmp-cmdline.enable = true;
-    
+
     plugins.treesitter.enable = true;
 
     plugins.nvim-tree = {

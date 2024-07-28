@@ -26,9 +26,9 @@
     variant = "";
   };
 
-  fonts.packages = with pkgs; [ 
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
-    dejavu_fonts 
+    dejavu_fonts
   ];
 
   boot.loader.systemd-boot.configurationLimit = 10;
