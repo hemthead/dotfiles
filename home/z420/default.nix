@@ -12,6 +12,7 @@
     blender
     olive-editor
     godot_4
+    prismlauncher
   ];
 
   programs.obs-studio = {
