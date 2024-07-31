@@ -19,4 +19,12 @@
     enable = true;
     plugins = with pkgs; [ obs-studio-plugins.wlrobs ];
   };
+
+  # virtualization and qemu
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+  };
 }

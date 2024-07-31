@@ -57,6 +57,11 @@
     };
   };
 
+  # virtualization and qemu
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  users.users.johndr.extraGroups = [ "libvirtd" ];
+
   # OpenCL disabled on 500 series cards by default
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 
