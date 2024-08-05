@@ -9,5 +9,6 @@
     ./firefox.nix
     ./hyfetch.nix
     ./thunderbird.nix
+    ./filemanager.nix
   ];
 }
