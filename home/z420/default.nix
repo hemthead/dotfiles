@@ -8,7 +8,7 @@
 
     # some of these may end up in the common config (likely)
     gimp
-    krita
+    mypaint
     blender
     olive-editor
     godot_4
