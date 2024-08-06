@@ -96,6 +96,7 @@
     timg
     mpv
     brightnessctl
+    p7zip
   ];
 
   # moar man pages
