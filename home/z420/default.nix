@@ -8,7 +8,7 @@
 
     # some of these may end up in the common config (likely)
     gimp
-    mypaint
+    krita # tried mypaint but I don't want to fix it not working
     blender
     olive-editor
     godot_4
