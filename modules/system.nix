@@ -44,7 +44,6 @@
 
   security.pam.services.swaylock = { }; # let swaylock work
 
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   #  services.power-profiles-daemon.enable = true;
   security.polkit.enable = true;
@@ -103,6 +102,7 @@
   documentation.dev.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.EDITOR = "${pkgs.neovim}/bin/nvim";
 
   hardware.graphics = {
     enable = true;
