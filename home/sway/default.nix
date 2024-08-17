@@ -3,7 +3,7 @@
 , config
 , ...
 }: {
-  imports = [ ./swaylock.nix ./swayidle.nix ./i3status-rust.nix ./mako.nix ];
+  imports = [ ./swaylock.nix ./i3status-rust.nix ./mako.nix ];
 
   wayland.windowManager.sway = {
     enable = true;

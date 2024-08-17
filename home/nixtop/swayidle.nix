@@ -3,6 +3,7 @@
 
   services.swayidle = {
     enable = true;
+    extraArgs = [ "-w" ];
     events = [
       {
         event = "lock";
