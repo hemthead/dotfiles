@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ../default.nix
+    ./swayidle.nix
   ];
 
   home.packages = with pkgs; [
