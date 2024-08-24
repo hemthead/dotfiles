@@ -92,7 +92,7 @@
     };
 
     extraConfig = ''
-      output * bg ${../../wallpaper} fill
+      output * bg ${../../wallpaper} center #FF0000
     '';
   };
 
