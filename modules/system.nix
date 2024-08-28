@@ -42,6 +42,8 @@
     };
   };
 
+  services.udisks2.enable = true; #thonny and other usb stuffs?
+
   security.pam.services.swaylock = { }; # let swaylock work
 
   hardware.pulseaudio.enable = false;
