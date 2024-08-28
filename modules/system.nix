@@ -75,7 +75,7 @@
   users.users.johndr = {
     isNormalUser = true;
     description = "John Douglas Reed";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "dialout" ];
   };
 
   # Allow unfree packages
