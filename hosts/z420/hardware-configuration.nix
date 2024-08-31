@@ -40,7 +40,7 @@
 
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 16*1024;
+    size = 16 * 1024;
   }];
   boot.resumeDevice = fileSystems."/".device;
   boot.kernelParams = [ "mem_sleep_default=deep" "resume_offset=27381760" ];
