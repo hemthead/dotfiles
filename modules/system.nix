@@ -103,6 +103,7 @@
     mpv
     brightnessctl
     p7zip
+    screen
   ];
 
   # moar man pages
