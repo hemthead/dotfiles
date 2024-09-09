@@ -39,6 +39,11 @@
       default_session = {
         command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
       };
+      
+      initial_session = {
+        command = "sway";
+        user = "johndr";
+      };
     };
   };
 
@@ -117,6 +122,10 @@
       # put dynamic libraries here (?)
     ];
   };
+
+  # prevent trackpad from being disabled on lid-close
+  powerManagement.resumeCommands = "${pkgs.kmod}/bin/rmmod atkbd; ${pkgs.kmod}/bin/modprobe atkbd reset=1";
+  services.logind.lidSwitch = "suspend-then-hibernate";
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
