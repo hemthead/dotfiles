@@ -10,5 +10,6 @@
     ./hyfetch.nix
     ./thunderbird.nix
     ./filemanager.nix
+    ./direnv.nix
   ];
 }
