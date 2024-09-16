@@ -53,7 +53,7 @@
 
     plugins.lightline = {
       enable = true;
-      colorscheme = "everforest";
+      settings.colorscheme = "everforest";
     };
 
     plugins.cmp.enable = true;
