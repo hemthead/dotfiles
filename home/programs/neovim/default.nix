@@ -26,6 +26,7 @@
       expandtab = true;
       shiftwidth = 2;
       tabstop = 2;
+      wrap = false;
     };
 
     keymaps = [
