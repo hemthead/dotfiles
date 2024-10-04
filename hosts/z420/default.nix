@@ -11,10 +11,6 @@
     ./hardware-configuration.nix # Include the results of the hardware scan.
   ];
 
-  # Bootloader.
-  #boot.loader.systemd-boot.enable = true; # overloaded by secure-boot stuff
-  boot.loader.efi.canTouchEfiVariables = true;
-
   networking.hostName = "z420"; # Define your hostname.
 
   # Configure network proxy if necessary
@@ -27,9 +23,14 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Bootloader.
+  #boot.loader.systemd-boot.enable = true; # overloaded by secure-boot stuff
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.initrd.kernelModules = [ "amdgpu" ];
   boot.loader.grub = {
     enable = true;
+    efiSupport = true;
     device = "nodev";
     useOSProber = true;
     configurationLimit = 5;
