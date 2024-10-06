@@ -13,7 +13,9 @@
     blender
     olive-editor
     godot_4
-    prismlauncher
+    prismlauncher # minecraft, use steam-run
+
+    lutris-free # gaming
   ];
 
   programs.obs-studio = {
