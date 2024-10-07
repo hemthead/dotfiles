@@ -124,6 +124,8 @@
     ];
   };
 
+  programs.dconf.enable = true;
+
   # prevent trackpad from being disabled on lid-close
   powerManagement.resumeCommands = "${pkgs.kmod}/bin/rmmod atkbd; ${pkgs.kmod}/bin/modprobe atkbd reset=1";
   services.logind.lidSwitch = "suspend-then-hibernate";
