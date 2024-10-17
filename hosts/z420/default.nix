@@ -20,6 +20,16 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 8080 ];
+    #extraCommands = ''
+    #  iptables -A INPUT -j ACCEPT -p tcp --destination-port 8080 # you might wonder why this `extraCommands` section is here, given 
+    #                                                             # the above options. Yeah, I hate myself for wasting an hour on the
+    #                                                             # wrong computer...
+    #'';
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
