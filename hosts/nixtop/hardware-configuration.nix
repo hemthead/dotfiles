@@ -31,7 +31,9 @@
     size = 16 * 1024;
   }];
   boot.resumeDevice = fileSystems."/".device;
-  boot.kernelParams = [ "mem_sleep_default=deep" "resume_offset=3076096" "psmouse.synaptics_intertouch=0" ];
+  # blacklist psmouse because touchpad uses i2c_designware and it gets messed up?
+  boot.blacklistedKernelModules = [ "psmouse" ];
+  boot.kernelParams = [ "mem_sleep_default=deep" "resume_offset=3076096"  ]; # "atkbd.reset=1" "atkbd.extra=1" "psmouse.proto=any" "psmouse.resetafter=100" not sure about psmouse or atkbd
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
