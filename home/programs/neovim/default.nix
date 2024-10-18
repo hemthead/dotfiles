@@ -70,6 +70,9 @@
       enable = true;
       openOnSetup = true;
       openOnSetupFile = true;
+      extraOptions = {
+        filters.git_ignored = false;
+      };
     };
 
     extraPlugins = with pkgs.vimPlugins; [
