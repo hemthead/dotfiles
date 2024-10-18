@@ -1,7 +1,9 @@
 -- LSPs
 local lspconfig = require("lspconfig")
 
-lspconfig.clangd.setup {}
+lspconfig.clangd.setup {
+  filetypes = { "cpp", "objc", "objcpp", "cuda", "proto" },
+} -- I give up with clangd for c
 lspconfig.rust_analyzer.setup {}
 lspconfig.nil_ls.setup {}
 lspconfig.pyright.setup {}
