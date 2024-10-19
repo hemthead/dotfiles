@@ -24,8 +24,11 @@
       scrolloff = 8;
 
       expandtab = true;
-      shiftwidth = 2;
-      tabstop = 2;
+
+      # default indent of 4
+      shiftwidth = 4;
+      tabstop = 4;
+
       wrap = false;
     };
 
@@ -64,7 +67,35 @@
     plugins.cmp-path.enable = true;
     plugins.cmp-cmdline.enable = true;
 
-    plugins.treesitter.enable = true;
+    plugins.treesitter = {
+      enable = true;
+      settings = {
+        highlight.enable = true;
+        incremental_selection.enable = true;
+        indent.enable = true;
+      };
+
+      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        bash
+        c
+        cpp
+        css
+        disassembly
+        #gdscript
+        html
+        javascript
+        lua
+        make
+        markdown
+        nix
+        regex
+        rust
+        #sql
+        #toml
+        #vim
+        #vimdoc
+      ];
+    };
 
     plugins.nvim-tree = {
       enable = true;
@@ -78,7 +109,6 @@
 
     extraPlugins = with pkgs.vimPlugins; [
       nvim-lspconfig
-      nvim-treesitter
       fidget-nvim
       vim-vsnip
       vim-gutentags
@@ -87,5 +117,11 @@
 
     extraConfigLua = builtins.readFile ./extraConfig.lua;
     extraConfigLuaPost = builtins.readFile ./extraConfigPost.lua;
+
+    extraFiles = {
+      "ftplugin/nix.lua".source = ./two-indent.lua;
+      "ftplugin/html.lua".source = ./two-indent.lua;
+      "ftplugin/lua.lua".source = ./two-indent.lua;
+    };
   };
 }
