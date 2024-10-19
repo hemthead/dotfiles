@@ -85,5 +85,6 @@
     ];
 
     extraConfigLua = builtins.readFile ./extraConfig.lua;
+    extraConfigLuaPost = builtins.readFile ./extraConfigPost.lua;
   };
 }
