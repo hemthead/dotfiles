@@ -2,7 +2,7 @@
 , pkgs
 , ...
 }: {
-  imports = [ ./sway ./programs ./system-theme.nix ];
+  imports = [ ./config ./sway ./programs ./system-theme.nix ];
 
   home = {
     username = "johndr";
