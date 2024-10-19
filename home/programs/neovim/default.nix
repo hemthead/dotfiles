@@ -74,6 +74,7 @@
         filters.git_ignored = false;
       };
     };
+    plugins.web-devicons.enable = true; # enable for nvim-tree
 
     extraPlugins = with pkgs.vimPlugins; [
       nvim-lspconfig
