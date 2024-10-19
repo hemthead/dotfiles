@@ -104,6 +104,7 @@
     brightnessctl
     p7zip
     screen
+    univeral-ctags
   ];
 
   # moar man pages

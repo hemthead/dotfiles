@@ -12,6 +12,8 @@ lspconfig.zls.setup {}
 
 require("fidget").setup()
 
+vim.g.c_syntax_for_h = false -- prevent detecting .c and .h as .cpp???!?
+
 -- LSP lines pop up in window
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once

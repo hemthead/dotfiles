@@ -80,6 +80,8 @@
       nvim-treesitter
       fidget-nvim
       vim-vsnip
+      vim-gutentags
+      pkgs.universal-ctags
     ];
 
     extraConfigLua = builtins.readFile ./extraConfig.lua;
