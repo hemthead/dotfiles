@@ -105,6 +105,7 @@
     p7zip
     screen
     universal-ctags
+    htop-vim
   ];
 
   # moar man pages
