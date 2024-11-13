@@ -96,5 +96,5 @@
     '';
   };
 
-  home.packages = with pkgs; [ swaybg wl-clipboard shotman ];
+  home.packages = with pkgs; [ swayimg swaybg wl-clipboard shotman ];
 }

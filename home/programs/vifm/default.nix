@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     vifm
-    oculante
   ];
 
   xdg.configFile."vifm/vifmrc".text = ''
@@ -82,8 +81,8 @@
 
     " image
     filextype {*.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm},<image/*>
-      \ {View in oculante}
-      \ oculante %f &,
+      \ {View with swayimg}
+      \ ${pkgs.swayimg}/bin/swayimg %f &,
     filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
       \ {View in timg}
       \ timg -ps -E --title --center --clear %f; read -n1 -s -r -p "Press any key to return",
