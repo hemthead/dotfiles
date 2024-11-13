@@ -9,4 +9,7 @@
   #      };
   #    };
   #  };
+
+  # aerc config
+  programs.aerc.enable = true;
 }

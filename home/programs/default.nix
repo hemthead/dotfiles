@@ -8,7 +8,7 @@
     ./foot.nix
     ./firefox.nix
     ./hyfetch.nix
-    ./thunderbird.nix
+    ./email.nix
     ./filemanager.nix
     ./direnv.nix
   ];
