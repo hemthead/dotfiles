@@ -13,5 +13,15 @@
     extraConfig.init.defaultBranch = "main";
 
     extraConfig.url."https://github.com/".insteadOf = [ "gh:" "github:" ];
+
+    # setup for git send-email
+    extraConfig.sendemail = {
+      smtpServer = "smtp.gmail.com";
+      smtpUser = "reallyjohnreed@gmail.com";
+      smtpEncryption = "tls";
+      smtpServerPort = 587;
+    };
+    # store smtpPass in special file, since I can't put it here
+    extraConfig.credential.helper = "store";
   };
 }
