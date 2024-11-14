@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  home.packages = [ pkgs.thunderbird ];
+  home.packages = with pkgs; [ thunderbird aerc ];
   #  programs.thunderbird = {
   #    enable = true;
   #    profiles = {
@@ -9,7 +9,4 @@
   #      };
   #    };
   #  };
-
-  # aerc config
-  programs.aerc.enable = true;
 }
