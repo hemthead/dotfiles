@@ -64,6 +64,10 @@
     #jack.enable = true;
   };
 
+  xdg.portal.enable = true;
+  xdg.portal.wlr.enable = true;
+  xdg.portal.config.common.default = "*";
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
