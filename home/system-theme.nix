@@ -13,7 +13,7 @@
     theme.package = pkgs.gnome-themes-extra;
     iconTheme.name = "Adwaita";
     iconTheme.package = pkgs.adwaita-icon-theme;
-    
+
     gtk2.extraConfig = ''
       gtk-application-prefer-dark-theme = "true"
     '';
