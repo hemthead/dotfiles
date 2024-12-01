@@ -73,6 +73,10 @@
   programs.virt-manager.enable = true;
   users.users.johndr.extraGroups = [ "libvirtd" ];
 
+  environment.systemPackages = with pkgs; [
+    virtiofsd # file sharing between host and guest
+  ];
+
   # OpenCL disabled on 500 series cards by default
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
 

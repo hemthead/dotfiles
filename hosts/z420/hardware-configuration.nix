@@ -17,23 +17,24 @@
     "xhci_pci"
     "firewire_ohci"
     "sd_mod"
+    "virtio-pci" # hardware passthrough to guest machines
   ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/826b4b3f-1e19-4dc4-9dd7-ab0942b8d42f";
+    device = "/dev/disk/by-uuid/b68e3c5a-943c-4446-aa4a-80c322bb367e";
     fsType = "ext4";
   };
 
   fileSystems."/home/johndr/filestorage" = {
-    device = "/dev/disk/by-uuid/6f0c1acb-d429-415a-bff9-5ce6e4899c79";
+    device = "/dev/disk/by-uuid/42eb16df-08d3-4876-b382-d599728b2cf3";
     fsType = "ext4";
   };
 
   fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/CCB7-46D5";
+    device = "/dev/disk/by-uuid/22FA-FC7F";
     fsType = "vfat";
     options = [ "fmask=0022" "dmask=0022" ];
   };
@@ -43,7 +44,7 @@
     size = 16 * 1024;
   }];
   boot.resumeDevice = fileSystems."/".device;
-  boot.kernelParams = [ "mem_sleep_default=deep" "resume_offset=27381760" ];
+  boot.kernelParams = [ "intel_iommu=on" "mem_sleep_default=deep" "resume_offset=27381760" ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
