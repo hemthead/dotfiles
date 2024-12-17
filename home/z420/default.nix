@@ -6,6 +6,8 @@
 
   home.packages = with pkgs; [
     discord
+    signal-desktop
+    # matrix client when I get that working (run my own server)
 
     # some of these may end up in the common config (likely)
     gimp
