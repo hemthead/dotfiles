@@ -49,6 +49,23 @@
         key = "<C-`>";
         mode = [ "n" ];
       }
+      {
+        # toggle folds with space
+        action = "za";
+        key = "<Space>";
+        mode = [ "n" "v" ];
+      }
+    ];
+
+    autoCmd = [
+      {
+        desc = "Open all folds on buffer create";
+        command = "normal zR";
+        event = [
+          "BufEnter"
+          "BufWinEnter"
+        ];
+      }
     ];
 
     # colorscheme = "slate";
@@ -69,6 +86,7 @@
 
     plugins.treesitter = {
       enable = true;
+      folding = true;
       settings = {
         highlight.enable = true;
         incremental_selection.enable = true;
