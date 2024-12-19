@@ -104,5 +104,40 @@
           #        })
         ];
       };
+
+      nixosConfigurations.home-server = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        modules = [
+          { _module.args = { inherit inputs; }; }
+
+          ./hosts/home-server
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+
+              extraSpecialArgs = inputs;
+
+              users.johndr = import ./home/home-server;
+            };
+          }
+
+          #        lanzaboote.nixosModules.lanzaboote ({ pkgs, lib, ...}: {
+          #          environment.systemPackages = [
+          #            pkgs.sbctl # debugging and troubleshooting secure boot
+          #          ];
+          #
+          #          # replace systemd-boot
+          #          boot.loader.systemd-boot.enable = lib.mkForce false;
+          #          boot.lanzaboote = {
+          #            enable = true;
+          #            pkiBundle = "/etc/secureboot";
+          #          };
+          #        })
+        ];
+      };
     };
 }
