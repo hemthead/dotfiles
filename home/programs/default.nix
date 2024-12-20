@@ -11,5 +11,6 @@
     ./email.nix
     ./filemanager.nix
     ./direnv.nix
+    ./terminal-multiplexer.nix
   ];
 }

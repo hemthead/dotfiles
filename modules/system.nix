@@ -107,7 +107,7 @@
     mpv
     brightnessctl
     p7zip
-    screen
+    tmux
     universal-ctags
     htop-vim
   ];

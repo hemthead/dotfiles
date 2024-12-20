@@ -5,6 +5,7 @@
     ../programs/hyfetch.nix
     ../programs/direnv.nix
     ../programs/neovim
+    ../programs/terminal-multiplexer.nix
   ];
 
   home = {

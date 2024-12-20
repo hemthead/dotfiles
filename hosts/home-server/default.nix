@@ -10,6 +10,8 @@
       #../../modules/system.nix # import basic every-config stuff
 
       ./hardware-configuration.nix
+      ./nginx.nix
+      ./conduwuit.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -67,14 +69,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     git
-     curl
-     htop-vim
-     man-pages
-     man-pages-posix
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    git
+    curl
+    htop-vim
+    man-pages
+    man-pages-posix
+    tmux # Trying it over screen
   ];
+
+  environment.sessionVariables.EDITOR = "${pkgs.neovim}/bin/nvim";
 
   documentation.dev.enable = true;
 
