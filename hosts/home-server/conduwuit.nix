@@ -1,8 +1,10 @@
-{...}: {
+{ pkgs, conduwuit, ... }: {
   services.conduwuit = {
     enable = true;
+    package = conduwuit.packages.${pkgs.system}.default;
+
     settings.global = {
-      server_name = "jenericDame.ddns.net";
+      server_name = "jenerictest.ddns-ip.net";
       port = [ 6167 ]; # default
 
       allow_registration = true;
@@ -13,16 +15,13 @@
 
   networking.firewall.allowedTCPPorts = [ 8448 ]; # matrix port
 
-  services.nginx.virtualHosts."jenerictest.ddns-ip.net".locations."/_matrix" = {
-    proxyPass = "http://localhost:6167"; # send matrix requests to conduwuit
+  services.nginx.virtualHosts."jenerictest.ddns-ip.net" = {
+    locations."/_matrix" = {
+      proxyPass = "http://localhost:6167"; # send matrix requests to conduwuit
+    };
+    listen = [
+      { addr = "0.0.0.0"; port = 8448; ssl = true; }
+      { addr = "[::0]"; port = 8448; ssl = true; }
+    ];
   };
-  # again, create a server to forward matrix requests
-  services.nginx.appendHttpConfig = ''
-    server {
-      listen 8448;
-      location / {
-        proxy_pass http://localhost:6167;
-      }
-    }
-  '';
 }
