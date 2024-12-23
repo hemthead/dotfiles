@@ -26,6 +26,11 @@
     variant = "";
   };
 
+  # power management stuff
+  powerManagement.enable = true;
+  services.thermald.enable = true;
+  services.tlp.enable = true; # eventually may be replaced with auto-cpufreq
+
   fonts.packages = with pkgs; [
     nerd-fonts.dejavu-sans-mono
     dejavu_fonts

@@ -16,6 +16,11 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # power management stuff
+  powerManagement.enable = true;
+  services.thermald.enable = true;
+  services.tlp.enable = true; # eventually may be replaced with auto-cpufreq
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true; # i'm fine with systemd-boot here since this is server
   boot.loader.efi.canTouchEfiVariables = true;
