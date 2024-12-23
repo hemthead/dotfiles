@@ -18,6 +18,12 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    conduwuit = {
+      #url = "github:girlbossceo/conduwuit";
+      url = "github:girlbossceo/conduwuit/5b5735f653e1169ebf5eeaa7add51070fd7cd1cc"; # change this when v0.5.0 comes out
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -26,6 +32,7 @@
     , home-manager
     , lanzaboote
     , nixvim
+    , conduwuit
     , ...
     }: {
 
@@ -109,7 +116,7 @@
         system = "x86_64-linux";
 
         modules = [
-          { _module.args = { inherit inputs; }; }
+          { _module.args = { inherit inputs; inherit conduwuit; }; }
 
           ./hosts/home-server
 

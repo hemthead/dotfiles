@@ -6,6 +6,13 @@
   };
   services.nginx.virtualHosts."jenerictest.ddns-ip.net" = {
     # I'm a bit afraid to activate these until I actually have the domain again
+    listen = [
+      { addr = "0.0.0.0"; port = 80; }
+      { addr = "[::0]"; port = 80; }
+
+      { addr = "0.0.0.0"; port = 443; ssl = true; }
+      { addr = "[::0]"; port = 443; ssl = true; }
+    ];
     addSSL = true;
     enableACME = true;
     root = "/var/www/jenericdame.ddns.net";
