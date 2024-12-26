@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, ... }: rec {
   imports = [
     ../default.nix
     ./swayidle.nix
@@ -35,4 +35,11 @@
       uris = [ "qemu:///system" ];
     };
   };
+
+  wayland.windowManager.sway.extraConfig = ''
+    output DP-1 pos 0 0
+    exec swaymsg focus output DP-1
+
+    output HDMI-A-1 transform 270
+  '';
 }
