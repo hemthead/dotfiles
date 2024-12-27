@@ -75,7 +75,14 @@
 
   environment.systemPackages = with pkgs; [
     virtiofsd # file sharing between host and guest
+    via # mechanical keyboard config
+    piper # gaming mouse config
   ];
+
+  hardware.keyboard.qmk.enable = true;
+  services.udev.packages = [ pkgs.via ];
+
+  services.ratbagd.enable = true;
 
   # OpenCL disabled on 500 series cards by default
   environment.variables = { ROC_ENABLE_PRE_VEGA = "1"; };
