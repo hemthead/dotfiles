@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       color = "000000";
-      image = "${../../wallpaper}";
+      image = "${../../wallpapers/night}";
     };
   };
 }

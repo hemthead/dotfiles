@@ -97,17 +97,23 @@
     Timer = {
       OnStartupSec = "0m";
       OnUnitActiveSec = "1h";
+      Unit = "wallpaper-shift.service";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
     };
   };
   systemd.user.services."wallpaper-shift" = {
-    script = ''
-      # poll for two hours before before/after dark starts/ends at Cincinnati, OH
-      ${pkgs.sunwait}/bin/sunwait poll offset -02:00 39.103119N 84.512016W
-      time=$?
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.writeShellScript "wallpaper-shift" ''
+        # poll for two hours before before/after dark starts/ends at Cincinnati, OH
+        ${pkgs.sunwait}/bin/sunwait poll offset -02:00 39.103119N 84.512016W
+        time=$?
 
-      set -eu
-      
-      case $time in
+        set -eu
+
+        case $time in
         2) # day
             ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/day} center "#A6CCD9"
           ;;
@@ -117,8 +123,13 @@
         *) # error
           exit 1
           ;;
-      esac
-    '';
+        esac
+    ''}";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
   };
 
   home.packages = with pkgs; [ swayimg swaybg wl-clipboard shotman sunwait ];
