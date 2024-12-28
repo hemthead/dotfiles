@@ -90,11 +90,36 @@
 
       defaultWorkspace = "workspace number 1";
     };
+  };
 
-    extraConfig = ''
-      output * bg ${../../wallpaper} center #A6CCD9
+  # manage wallpapers according to time
+  systemd.user.timers."wallpaper-shift" = {
+    Timer = {
+      OnStartupSec = "0m";
+      OnUnitActiveSec = "1h";
+    };
+  };
+  systemd.user.services."wallpaper-shift" = {
+    script = ''
+      # poll for two hours before before/after dark starts/ends at Cincinnati, OH
+      ${pkgs.sunwait}/bin/sunwait poll offset -02:00 39.103119N 84.512016W
+      time=$?
+
+      set -eu
+      
+      case $time in
+        2) # day
+            ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/day} center "#A6CCD9"
+          ;;
+        3) # night
+            ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/night} center "#1C1F4E"
+          ;;
+        *) # error
+          exit 1
+          ;;
+      esac
     '';
   };
 
-  home.packages = with pkgs; [ swayimg swaybg wl-clipboard shotman ];
+  home.packages = with pkgs; [ swayimg swaybg wl-clipboard shotman sunwait ];
 }
