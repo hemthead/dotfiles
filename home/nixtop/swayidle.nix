@@ -1,20 +1,5 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ swayidle ];
-
-  services.swayidle = {
-    enable = true;
-    extraArgs = [ "-w" ];
-    events = [
-      {
-        event = "lock";
-        command = "${pkgs.swaylock}/bin/swaylock -f";
-      }
-      {
-        event = "before-sleep";
-        command = "${pkgs.systemd}/bin/loginctl lock-session";
-      }
-    ];
-    timeouts = [
+  services.swayidle.timeouts = [
       {
         timeout = 60 * 3;
         command = "${pkgs.systemd}/bin/loginctl lock-session";
@@ -29,5 +14,4 @@
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
-  };
 }

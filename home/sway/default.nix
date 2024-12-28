@@ -2,8 +2,30 @@
 , lib
 , config
 , ...
-}: {
-  imports = [ ./swaylock.nix ./i3status-rust.nix ./mako.nix ];
+}: 
+let 
+wallpaper-shift = pkgs.writeShellScript "wallpaper-shift" ''
+    # poll for two hours before before/after dark starts/ends at Cincinnati, OH
+    ${pkgs.sunwait}/bin/sunwait poll offset -02:00 39.103119N 84.512016W
+    time=$?
+
+    set -eu
+
+    case $time in
+    2) # day
+        ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/day} center "#A6CCD9"
+      ;;
+    3) # night
+        ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/night} center "#1C1F4E"
+      ;;
+    *) # error
+      exit 1
+      ;;
+    esac
+'';
+in
+{
+  imports = [ ./i3status-rust.nix ./mako.nix ];
 
   wayland.windowManager.sway = {
     enable = true;
@@ -90,13 +112,16 @@
 
       defaultWorkspace = "workspace number 1";
     };
+    extraConfig = ''
+      exec ${wallpaper-shift}
+    '';
   };
 
   # manage wallpapers according to time
   systemd.user.timers."wallpaper-shift" = {
     Timer = {
-      OnStartupSec = "0m";
-      OnUnitActiveSec = "1h";
+      OnStartupSec = "30m";
+      OnUnitActiveSec = "30m";
       Unit = "wallpaper-shift.service";
     };
     Install = {
@@ -106,25 +131,7 @@
   systemd.user.services."wallpaper-shift" = {
     Service = {
       Type = "oneshot";
-      ExecStart = "${pkgs.writeShellScript "wallpaper-shift" ''
-        # poll for two hours before before/after dark starts/ends at Cincinnati, OH
-        ${pkgs.sunwait}/bin/sunwait poll offset -02:00 39.103119N 84.512016W
-        time=$?
-
-        set -eu
-
-        case $time in
-        2) # day
-            ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/day} center "#A6CCD9"
-          ;;
-        3) # night
-            ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/night} center "#1C1F4E"
-          ;;
-        *) # error
-          exit 1
-          ;;
-        esac
-    ''}";
+      ExecStart = "${wallpaper-shift}";
     };
 
     Install = {
@@ -132,5 +139,33 @@
     };
   };
 
-  home.packages = with pkgs; [ swayimg swaybg wl-clipboard shotman sunwait ];
+  services.swayidle = {
+    enable = true;
+    extraArgs = [ "-w" ];
+    events = [
+      {
+        event = "lock";
+        command = "${pkgs.swaylock}/bin/swaylock -f";
+      }
+      {
+        event = "before-sleep";
+        command = "${pkgs.systemd}/bin/loginctl lock-session";
+      }
+      {
+        event = "after-resume";
+        command = "${wallpaper-shift}";
+      }
+    ];
+  };
+
+  programs.swaylock = {
+    enable = true;
+    settings = {
+      color = "1C1F4E";
+      image = "${../../wallpapers/lock}";
+      scaling = "center";
+    };
+  };
+
+  home.packages = with pkgs; [ swayimg swaybg wl-clipboard shotman sunwait swayidle ];
 }
