@@ -123,6 +123,7 @@ in
       OnStartupSec = "30m";
       OnUnitActiveSec = "30m";
       Unit = "wallpaper-shift.service";
+      Persistent = true;
     };
     Install = {
       WantedBy = [ "default.target" ];
