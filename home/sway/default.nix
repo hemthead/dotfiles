@@ -112,8 +112,9 @@ in
 
       defaultWorkspace = "workspace number 1";
     };
+    
     extraConfig = ''
-      exec ${wallpaper-shift}
+      exec_always systemctl --user start wallpaper-shift.service
     '';
   };
 
@@ -136,7 +137,7 @@ in
     };
 
     Install = {
-      WantedBy = [ "default.target" ];
+      WantedBy = [ "default.target" "sway-session.target" ];
     };
   };
 
