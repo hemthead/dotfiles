@@ -6,7 +6,7 @@
 let 
 wallpaper-shift = pkgs.writeShellScript "wallpaper-shift" ''
     # poll for two hours before before/after dark starts/ends at Cincinnati, OH
-    ${pkgs.sunwait}/bin/sunwait poll offset -02:00 39.103119N 84.512016W
+    ${pkgs.sunwait}/bin/sunwait poll offset 02:00 39.103119N 84.512016W
     time=$?
 
     set -eu
