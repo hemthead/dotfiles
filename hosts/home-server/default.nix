@@ -16,6 +16,12 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    nssmdns6 = true;
+  };
+
   # power management stuff
   powerManagement.enable = true;
   services.thermald.enable = true;
