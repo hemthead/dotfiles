@@ -4,13 +4,9 @@
     ./vifm
     ./neovim
 
-    ./git.nix
-    ./foot.nix
+    ./terminal.nix
     ./firefox.nix
-    ./hyfetch.nix
     ./email.nix
     ./filemanager.nix
-    ./direnv.nix
-    ./terminal-multiplexer.nix
   ];
 }
