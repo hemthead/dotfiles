@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ aerc vdhcoapp xfce.thunar ];
+  home.packages = with pkgs; [ aerc vdhcoapp xfce.thunar obsidian ];
 
   programs.thunderbird = {
     enable = true;
