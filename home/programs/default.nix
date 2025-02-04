@@ -5,8 +5,6 @@
     ./neovim
 
     ./terminal.nix
-    ./firefox.nix
-    ./email.nix
-    ./filemanager.nix
+    ./gen-utility.nix
   ];
 }

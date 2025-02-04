@@ -1,4 +1,16 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [ aerc vdhcoapp xfce.thunar ];
+
+  programs.thunderbird = {
+    enable = true;
+  #    profiles = {
+  #      "John Douglas Reed" = {
+  #        #name = "John Douglas Reed";
+  #        isDefault = true;
+  #      };
+  #    };
+  };
+
   programs.firefox = {
     enable = true;
     # I WOULD have this enabled but FIREFOX doesn't let me >:[
@@ -77,6 +89,4 @@
     #      };
     #    };
   };
-
-  home.packages = with pkgs; [ vdhcoapp ];
 }
