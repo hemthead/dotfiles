@@ -1,15 +1,5 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [ aerc vdhcoapp xfce.thunar obsidian ];
-
-  programs.thunderbird = {
-    enable = true;
-  #    profiles = {
-  #      "John Douglas Reed" = {
-  #        #name = "John Douglas Reed";
-  #        isDefault = true;
-  #      };
-  #    };
-  };
+  home.packages = with pkgs; [ thunderbird aerc vdhcoapp xfce.thunar obsidian ];
 
   programs.firefox = {
     enable = true;
