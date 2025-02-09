@@ -125,12 +125,18 @@
     };
     plugins.web-devicons.enable = true; # enable for nvim-tree
 
+    # It's about time I experiment with this
+    plugins.telescope.enable = true;
+
+
     extraPlugins = with pkgs.vimPlugins; [
       nvim-lspconfig
       fidget-nvim
       vim-vsnip
       vim-gutentags
       pkgs.universal-ctags
+      # getting on that obsidian grind rn
+      obsidian-nvim
     ];
 
     extraConfigLua = builtins.readFile ./extraConfig.lua;

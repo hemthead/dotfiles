@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  home.packages = with pkgs; [
+    ripgrep # awesomesauce?
+  ];
+
   programs.foot = {
     enable = true;
 
@@ -17,6 +21,9 @@
     '';
   };
   
+  # trying this out
+  programs.bat.enable = true;
+
   programs.git = {
     enable = true;
 
