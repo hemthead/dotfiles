@@ -62,7 +62,7 @@
 
   security.pam.services.swaylock = { }; # let swaylock work
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   #  services.power-profiles-daemon.enable = true;
   security.polkit.enable = true;
   security.rtkit.enable = true;
