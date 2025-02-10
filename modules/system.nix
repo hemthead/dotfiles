@@ -56,6 +56,8 @@
     enable = true;
     nssmdns4 = true;
     nssmdns6 = true;
+    publish.enable = true;
+    publish.addresses = true;
   };
 
   services.udisks2.enable = true; #thonny and other usb stuffs?

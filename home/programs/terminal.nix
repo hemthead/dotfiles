@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     ripgrep # awesomesauce?
+    fd
   ];
 
   programs.foot = {
