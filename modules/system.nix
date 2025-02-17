@@ -52,6 +52,11 @@
     };
   };
 
+  services.gvfs = {
+    enable = true;
+    package = lib.mkForce pkgs.gnome.gvfs;
+  };
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
