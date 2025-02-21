@@ -1,8 +1,15 @@
-{ pkgs, ... }: {
-  home.packages = with pkgs; [ thunderbird aerc vdhcoapp xfce.thunar obsidian ];
+{ pkgs, zen-browser, ... }: {
+  home.packages = with pkgs; [
+    thunderbird
+    aerc
+    vdhcoapp
+    xfce.thunar
+    obsidian
+    zen-browser.packages.${pkgs.system}.default
+  ];
 
   programs.firefox = {
-    enable = true;
+    enable = false;
     # I WOULD have this enabled but FIREFOX doesn't let me >:[
     #    profiles.johndr = {
     #      id = 0;

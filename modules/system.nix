@@ -130,6 +130,8 @@
     htop-vim
   ];
 
+  programs.appimage.binfmt = true;
+
   # moar man pages
   documentation.dev.enable = true;
 
