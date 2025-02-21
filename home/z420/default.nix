@@ -13,7 +13,7 @@
     gimp
     krita # tried mypaint but I don't want to fix it not working
     blender
-    olive-editor
+    shotcut
     godot_4
     prismlauncher # minecraft, use steam-run
 

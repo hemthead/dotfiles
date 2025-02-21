@@ -48,12 +48,15 @@
 
   # Configurations for AMDGPU and ROCm setup
 
-  hardware.graphics.extraPackages = with pkgs; [
-    rocmPackages.clr.icd # OpenCL
-    rocmPackages.clr
-    rocmPackages.rocminfo
-    rocmPackages.rocm-runtime
-  ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd # OpenCL
+      rocmPackages.clr
+      rocmPackages.rocminfo
+      rocmPackages.rocm-runtime
+    ];
+  };
 
   # Some programs hard-code the path to HIP
   systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}" ];
