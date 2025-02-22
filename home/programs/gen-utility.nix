@@ -6,6 +6,7 @@
     xfce.thunar
     obsidian
     zen-browser.packages.${pkgs.system}.default
+    abcde # cd ripper
   ];
 
   programs.firefox = {
