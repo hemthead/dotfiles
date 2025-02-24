@@ -128,6 +128,7 @@
     tmux
     universal-ctags
     htop-vim
+    clang
   ];
 
   programs.appimage.binfmt = true;
@@ -146,6 +147,7 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
+      glibc
       # put dynamic libraries here (?)
     ];
   };
