@@ -15,9 +15,11 @@
     blender
     shotcut
     godot_4
-    prismlauncher # minecraft, use steam-run
+    prismlauncher # minecraft
 
     lutris-free # gaming
+
+    strawberry # music!
   ];
 
   programs.obs-studio = {
