@@ -127,7 +127,7 @@
     p7zip
     tmux
     universal-ctags
-    htop-vim
+    zenith
     clang
   ];
 

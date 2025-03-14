@@ -86,7 +86,7 @@
     wget
     git
     curl
-    htop-vim
+    htop
     man-pages
     man-pages-posix
     tmux # Trying it over screen

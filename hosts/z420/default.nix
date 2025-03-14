@@ -59,7 +59,7 @@
   };
 
   # Some programs hard-code the path to HIP
-  systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages_5.clr}" ];
+  systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
 
   hardware.amdgpu = {
     opencl.enable = true;
@@ -116,7 +116,6 @@
       SDL2_ttf
       SDL_image
       SDL_mixer
-      SDL_ttf
       alsa-lib
       at-spi2-atk
       at-spi2-core
