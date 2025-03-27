@@ -14,6 +14,14 @@
   # Bootloader.
   #boot.loader.systemd-boot.enable = true; # overloaded by secure-boot stuff
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.grub = {
+    enable = true;
+    efiSupport = true;
+    device = "nodev";
+    useOSProber = true;
+    configurationLimit = 5;
+  };
 
   networking.hostName = "nixtop"; # Define your hostname.
 
