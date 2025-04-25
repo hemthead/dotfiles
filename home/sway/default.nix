@@ -114,32 +114,36 @@ in
     };
     
     extraConfig = ''
-      exec_always systemctl --user start wallpaper-shift.service
+      #exec_always systemctl --user start wallpaper-shift.service
     '';
   };
 
-  # manage wallpapers according to time
-  systemd.user.timers."wallpaper-shift" = {
-    Timer = {
-      OnStartupSec = "30m";
-      OnUnitActiveSec = "30m";
-      Unit = "wallpaper-shift.service";
-      Persistent = true;
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
-  systemd.user.services."wallpaper-shift" = {
-    Service = {
-      Type = "oneshot";
-      ExecStart = "${wallpaper-shift}";
-    };
+  services.wpaperd.enable = true;
+  services.wpaperd.settings = builtins.fromTOML (builtins.readFile ./wpaperd.toml);
+  #xdg.configFile."wpaperd/config.toml".source = ./wpaperd.toml;
 
-    Install = {
-      WantedBy = [ "default.target" "sway-session.target" ];
-    };
-  };
+  # manage wallpapers according to time
+#  systemd.user.timers."wallpaper-shift" = {
+#    Timer = {
+#      OnStartupSec = "30m";
+#      OnUnitActiveSec = "30m";
+#      Unit = "wallpaper-shift.service";
+#      Persistent = true;
+#    };
+#    Install = {
+#      WantedBy = [ "default.target" ];
+#    };
+#  };
+#  systemd.user.services."wallpaper-shift" = {
+#    Service = {
+#      Type = "oneshot";
+#      ExecStart = "${wallpaper-shift}";
+#    };
+#
+#    Install = {
+#      WantedBy = [ "default.target" "sway-session.target" ];
+#    };
+#  };
 
   services.swayidle = {
     enable = true;

@@ -42,7 +42,7 @@
     output DP-1 pos 0 0
     exec swaymsg focus output DP-1
 
-    output HDMI-A-1 transform 270
+    #output HDMI-A-1 transform 270
     output HDMI-A-1 pos 1920 0
 
     workspace 1 output DP-1

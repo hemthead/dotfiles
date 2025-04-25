@@ -1,0 +1,8 @@
+[default]
+duration = "15m"
+mode = "center"
+sorting = "random"
+
+[any]
+path = "/home/johndr/.wallpapers"
+group = 0
