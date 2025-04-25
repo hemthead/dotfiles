@@ -21,7 +21,7 @@
       set -sg escape-time 0
     '';
   };
-  
+
   # trying this out
   programs.bat.enable = true;
 

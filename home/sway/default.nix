@@ -2,9 +2,9 @@
 , lib
 , config
 , ...
-}: 
-let 
-wallpaper-shift = pkgs.writeShellScript "wallpaper-shift" ''
+}:
+let
+  wallpaper-shift = pkgs.writeShellScript "wallpaper-shift" ''
     # poll for two hours before before/after dark starts/ends at Cincinnati, OH
     ${pkgs.sunwait}/bin/sunwait poll offset 02:00 39.103119N 84.512016W
     time=$?
@@ -22,7 +22,7 @@ wallpaper-shift = pkgs.writeShellScript "wallpaper-shift" ''
       exit 1
       ;;
     esac
-'';
+  '';
 in
 {
   imports = [ ./i3status-rust.nix ./mako.nix ];
@@ -112,7 +112,7 @@ in
 
       defaultWorkspace = "workspace number 1";
     };
-    
+
     extraConfig = ''
       #exec_always systemctl --user start wallpaper-shift.service
     '';
@@ -123,27 +123,27 @@ in
   #xdg.configFile."wpaperd/config.toml".source = ./wpaperd.toml;
 
   # manage wallpapers according to time
-#  systemd.user.timers."wallpaper-shift" = {
-#    Timer = {
-#      OnStartupSec = "30m";
-#      OnUnitActiveSec = "30m";
-#      Unit = "wallpaper-shift.service";
-#      Persistent = true;
-#    };
-#    Install = {
-#      WantedBy = [ "default.target" ];
-#    };
-#  };
-#  systemd.user.services."wallpaper-shift" = {
-#    Service = {
-#      Type = "oneshot";
-#      ExecStart = "${wallpaper-shift}";
-#    };
-#
-#    Install = {
-#      WantedBy = [ "default.target" "sway-session.target" ];
-#    };
-#  };
+  #  systemd.user.timers."wallpaper-shift" = {
+  #    Timer = {
+  #      OnStartupSec = "30m";
+  #      OnUnitActiveSec = "30m";
+  #      Unit = "wallpaper-shift.service";
+  #      Persistent = true;
+  #    };
+  #    Install = {
+  #      WantedBy = [ "default.target" ];
+  #    };
+  #  };
+  #  systemd.user.services."wallpaper-shift" = {
+  #    Service = {
+  #      Type = "oneshot";
+  #      ExecStart = "${wallpaper-shift}";
+  #    };
+  #
+  #    Install = {
+  #      WantedBy = [ "default.target" "sway-session.target" ];
+  #    };
+  #  };
 
   services.swayidle = {
     enable = true;

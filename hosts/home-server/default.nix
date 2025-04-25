@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       #../../modules/system.nix # import basic every-config stuff
 
       ./hardware-configuration.nix
@@ -73,7 +74,7 @@
     isNormalUser = true;
     description = "John Douglas Reed";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 
   # Allow unfree packages
@@ -100,7 +101,7 @@
 
   services.fail2ban = {
     enable = true;
-    
+
     maxretry = 5;
     ignoreIP = [
       "192.168.1.24"
