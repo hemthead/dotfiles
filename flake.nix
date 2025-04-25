@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +30,6 @@
     inputs @ { self
     , nixpkgs
     , home-manager
-    , lanzaboote
     , nixvim
     , conduwuit
     , zen-browser
@@ -63,23 +57,6 @@
               users.johndr = import ./home/nixtop;
             };
           }
-
-          lanzaboote.nixosModules.lanzaboote
-          ({ pkgs
-           , lib
-           , ...
-           }: {
-            environment.systemPackages = [
-              pkgs.sbctl # debugging and troubleshooting secure boot
-            ];
-
-            # replace systemd-boot
-            boot.loader.systemd-boot.enable = lib.mkForce false;
-            boot.lanzaboote = {
-              enable = true;
-              pkiBundle = "/etc/secureboot";
-            };
-          })
         ];
       };
 
@@ -102,19 +79,6 @@
               users.johndr = import ./home/z420;
             };
           }
-
-          #        lanzaboote.nixosModules.lanzaboote ({ pkgs, lib, ...}: {
-          #          environment.systemPackages = [
-          #            pkgs.sbctl # debugging and troubleshooting secure boot
-          #          ];
-          #
-          #          # replace systemd-boot
-          #          boot.loader.systemd-boot.enable = lib.mkForce false;
-          #          boot.lanzaboote = {
-          #            enable = true;
-          #            pkiBundle = "/etc/secureboot";
-          #          };
-          #        })
         ];
       };
 
@@ -137,19 +101,6 @@
               users.johndr = import ./home/home-server;
             };
           }
-
-          #        lanzaboote.nixosModules.lanzaboote ({ pkgs, lib, ...}: {
-          #          environment.systemPackages = [
-          #            pkgs.sbctl # debugging and troubleshooting secure boot
-          #          ];
-          #
-          #          # replace systemd-boot
-          #          boot.loader.systemd-boot.enable = lib.mkForce false;
-          #          boot.lanzaboote = {
-          #            enable = true;
-          #            pkiBundle = "/etc/secureboot";
-          #          };
-          #        })
         ];
       };
     };
