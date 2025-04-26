@@ -159,7 +159,8 @@ in
       }
       {
         event = "after-resume";
-        command = "${wallpaper-shift}";
+        #command = "${wallpaper-shift}";
+        command = "";
       }
     ];
   };
