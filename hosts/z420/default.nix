@@ -73,11 +73,14 @@
 
   # virtualization and qemu
   virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
   programs.virt-manager.enable = true;
   users.users.johndr.extraGroups = [ "libvirtd" ];
 
+  virtualisation.waydroid.enable = true;
+
   environment.systemPackages = with pkgs; [
-    virtiofsd # file sharing between host and guest
+    #virtiofsd # file sharing between host and guest
     via # mechanical keyboard config
     piper # gaming mouse config
   ];

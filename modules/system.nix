@@ -52,6 +52,8 @@
     };
   };
 
+  boot.supportedFilesystems = [ "ntfs" ];
+
   services.gvfs = {
     enable = true;
     package = lib.mkForce pkgs.gnome.gvfs;
