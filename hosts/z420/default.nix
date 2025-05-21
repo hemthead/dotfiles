@@ -46,6 +46,11 @@
     configurationLimit = 5;
   };
 
+  boot.binfmt.emulatedSystems = [
+    "x86_64-windows"
+    "aarch64-linux"
+  ];
+
   # Configurations for AMDGPU and ROCm setup
 
   hardware.graphics = {
