@@ -9,8 +9,9 @@
     abcde # cd ripper
   ];
 
+  # I have zen, but sometimes media playback wants to be quirky, so firefox is a backup
   programs.firefox = {
-    enable = false;
+    enable = true;
     # I WOULD have this enabled but FIREFOX doesn't let me >:[
     #    profiles.johndr = {
     #      id = 0;

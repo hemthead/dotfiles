@@ -86,7 +86,7 @@
 
     plugins.treesitter = {
       enable = true;
-      folding = true;
+      folding = false; # lately folds just close randomly when I edit the file, so f that
       settings = {
         highlight.enable = true;
         incremental_selection.enable = true;
