@@ -115,6 +115,9 @@ in
 
     extraConfig = ''
       #exec_always systemctl --user start wallpaper-shift.service
+
+      # make godot windows open floating (godot likes to use many windows for menues)
+      for_window [class="Godot"] floating enable
     '';
   };
 
