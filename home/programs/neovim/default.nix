@@ -33,28 +33,28 @@
     };
 
     keymaps = [
-      {
-        # open a terminal panel and resize it
-        action.__raw = ''
-          function()
-            vim.api.nvim_open_win(0, true, {
-              split = 'below',
-              height = 10,
-              win = 0
-            })
-            vim.cmd("terminal")
-            vim.cmd("set winfixheight")
-          end
-        '';
-        key = "<C-`>";
-        mode = [ "n" ];
-      }
-      {
+      #{
+      ## open a terminal panel and resize it
+      #action.__raw = ''
+      #function()
+      #vim.api.nvim_open_win(0, true, {
+      #split = 'below',
+      #height = 10,
+      #win = 0
+      #})
+      #vim.cmd("terminal")
+      #vim.cmd("set winfixheight")
+      #end
+      #'';
+      #key = "<C-`>";
+      #mode = [ "n" ];
+      #}
+      #{
         # toggle folds with space
-        action = "za";
-        key = "<Space>";
-        mode = [ "n" "v" ];
-      }
+        #action = "za";
+        #key = "<Space>";
+        #mode = [ "n" "v" ];
+      #}
     ];
 
     autoCmd = [
@@ -70,6 +70,7 @@
 
     # colorscheme = "slate";
     colorschemes.everforest.enable = true;
+    #colorschemes.monokai-pro.enable = true;
     # maybe do some alpha-seethrough stuff here?
 
     plugins.lightline = {
@@ -112,13 +113,14 @@
         #toml
         #vim
         #vimdoc
+        zig
       ];
     };
 
     plugins.nvim-tree = {
       enable = true;
-      openOnSetup = true;
-      openOnSetupFile = true;
+      openOnSetup = false;
+      openOnSetupFile = false;
       extraOptions = {
         filters.git_ignored = false;
       };
@@ -128,7 +130,6 @@
     # It's about time I experiment with this
     plugins.telescope.enable = true;
 
-
     extraPlugins = with pkgs.vimPlugins; [
       nvim-lspconfig
       fidget-nvim
@@ -137,6 +138,7 @@
       pkgs.universal-ctags
       # getting on that obsidian grind rn
       obsidian-nvim
+      telescope-file-browser-nvim
     ];
 
     extraConfigLua = builtins.readFile ./extraConfig.lua;

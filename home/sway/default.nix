@@ -31,7 +31,7 @@ in
     enable = true;
     config = rec {
       modifier = "Mod4"; # super
-      terminal = "foot";
+      terminal = "ghostty";
       startup = [ ];
 
       colors.focused = {

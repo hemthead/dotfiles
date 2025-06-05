@@ -5,11 +5,14 @@
   ];
 
   programs.foot = {
-    enable = true;
+    enable = false;
 
     settings.colors.alpha = 0.75;
     settings.main.font = "monospace:size=10";
   };
+
+  programs.ghostty.enable = true;
+  xdg.configFile."ghostty/config".text = builtins.readFile ./ghostty.config;
 
   programs.tmux = {
     enable = true;

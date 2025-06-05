@@ -178,3 +178,35 @@ require("obsidian").setup({
     },
   },
 })
+
+-- Keybindings
+local map = vim.keymap.set
+local map_defaulst = { noremap = true, silent = true }
+
+-- set leader to space
+map('n', " ", "<Nop>", { silent=true, remap=false })
+vim.g.mapleader = " "
+
+-- Telescope 
+local tsbuiltin = require("telescope.builtin")
+map('n', "<leader>ff", tsbuiltin.find_files, {})
+map('n', "<leader>fg", tsbuiltin.live_grep, {})
+map('n', "<leader>fb", tsbuiltin.buffers, {})
+map('n', "<leader>fh", tsbuiltin.help_tags, {})
+
+-- NvimTree
+map('n', "<leader>e", ":NvimTreeToggle<cr>", {})
+
+-- Toggle Folds
+map({'n', 'v'}, "<leader>d", "za", {})
+
+-- open a terminal panel and resize it
+map('n', "<leader>`", function()
+    vim.api.nvim_open_win(0, true, {
+      split = 'below',
+      height = 10,
+      win = 0
+    })
+    vim.cmd("terminal")
+    vim.cmd("set winfixheight")
+  end, {})
