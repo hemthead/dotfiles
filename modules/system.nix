@@ -135,6 +135,9 @@
 
   programs.appimage.binfmt = true;
 
+  # KDE Connect? Wow, this looks awesome!
+  programs.kdeconnect.enable = true;
+
   # moar man pages
   documentation.dev.enable = true;
 
@@ -150,6 +153,7 @@
     enable = true;
     libraries = with pkgs; [
       glibc
+      xwayland
       # put dynamic libraries here (?)
     ];
   };

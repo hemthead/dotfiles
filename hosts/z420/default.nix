@@ -232,6 +232,8 @@
       xorg.xkeyboardconfig
       xz
       zlib
+      tk-8_5
+      tclPackages.tk
       # put dynamic libraries here (?)
     ];
   };
