@@ -26,6 +26,8 @@
     variant = "";
   };
 
+  # perhaps _this_ is the solution to my touchpad problems?
+
   # power management stuff
   powerManagement.enable = true;
   services.thermald.enable = true;
@@ -43,12 +45,13 @@
     settings = {
       default_session = {
         command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
-      };
-
-      initial_session = {
-        command = "sway";
         user = "johndr";
       };
+
+      #initial_session = {
+      #command = "sway";
+      #user = "johndr";
+      #};
     };
   };
 
