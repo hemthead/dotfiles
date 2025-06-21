@@ -15,15 +15,14 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/c0ef396c-a53e-414e-be58-cf80da13e993";
+    device = "/dev/disk/by-uuid/56e8e9e5-82dd-4b92-8054-512ad475507f";
     fsType = "ext4";
   };
 
-  boot.initrd.luks.devices."luks-6a5a0ecb-214e-48b7-8f57-0260a68512de".device = "/dev/disk/by-uuid/6a5a0ecb-214e-48b7-8f57-0260a68512de";
-
-  fileSystems."/boot" = {
+  fileSystems."/boot/efi" = {
     device = "/dev/disk/by-uuid/86B4-BE07";
     fsType = "vfat";
+    options = [ "fmask=0022" "dmask=0022" ];
   };
 
   swapDevices = [{
@@ -33,7 +32,7 @@
   boot.resumeDevice = fileSystems."/".device;
   # blacklist psmouse because touchpad uses i2c_designware and it gets messed up?
   boot.blacklistedKernelModules = [ "psmouse" ];
-  boot.kernelParams = [ "mem_sleep_default=deep" "resume_offset=3076096" ]; # "atkbd.reset=1" "atkbd.extra=1" "psmouse.proto=any" "psmouse.resetafter=100" not sure about psmouse or atkbd
+  boot.kernelParams = [ "mem_sleep_default=deep" "resume_offset=18300928" ]; # "atkbd.reset=1" "atkbd.extra=1" "psmouse.proto=any" "psmouse.resetafter=100" not sure about psmouse or atkbd
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
