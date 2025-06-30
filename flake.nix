@@ -9,11 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     conduwuit = {
       #url = "github:girlbossceo/conduwuit";
       url = "github:girlbossceo/conduwuit/5b5735f653e1169ebf5eeaa7add51070fd7cd1cc"; # change this when v0.5.0 comes out
@@ -30,7 +25,6 @@
     inputs @ { self
     , nixpkgs
     , home-manager
-    , nixvim
     , conduwuit
     , zen-browser
     , ...
