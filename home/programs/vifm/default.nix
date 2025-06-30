@@ -1,7 +1,5 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    vifm
-  ];
+  home.packages = with pkgs; [ vifm ];
 
   xdg.configFile."vifm/vifmrc".text = ''
     let &vicmd = $EDITOR
@@ -119,7 +117,7 @@
     filetype {*.asc},<application/pgp-signature>
            \ {Check signature}
            \ !!gpg --verify %c,
-    
+
     fileviewer *.zip,*.jar,*.war,*.ear,*.oxt unzip -l %f
 
     fileviewer *.tgz,*.tar.gz tar -tzf %c
@@ -132,7 +130,7 @@
 
     " Start shell in current directory
     nnoremap s :shell<cr>
-    
+
     " dir to clipboard
     nnoremap yd :!echo -n %d | ${pkgs.wl-clipboard}/bin/wl-copy %i
       \ && echo -n %d | ${pkgs.wl-clipboard}/bin/wl-copy -p %i<cr>
@@ -149,7 +147,7 @@
     nnoremap ,t :!$TERM &<cr>
 
     " MISC
-    
+
     " show dotfiles
     windo normal zo
   '';

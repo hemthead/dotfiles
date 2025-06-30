@@ -1,8 +1,4 @@
-{ pkgs
-, lib
-, config
-, ...
-}:
+{ pkgs, lib, config, ... }:
 let
   wallpaper-shift = pkgs.writeShellScript "wallpaper-shift" ''
     # poll for two hours before before/after dark starts/ends at Cincinnati, OH
@@ -13,18 +9,21 @@ let
 
     case $time in
     2) # day
-        ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/day} center "#A6CCD9"
+        ${pkgs.sway}/bin/swaymsg output "*" bg ${
+          ../../wallpapers/day
+        } center "#A6CCD9"
       ;;
     3) # night
-        ${pkgs.sway}/bin/swaymsg output "*" bg ${../../wallpapers/night} center "#1C1F4E"
+        ${pkgs.sway}/bin/swaymsg output "*" bg ${
+          ../../wallpapers/night
+        } center "#1C1F4E"
       ;;
     *) # error
       exit 1
       ;;
     esac
   '';
-in
-{
+in {
   imports = [ ./i3status-rust.nix ./mako.nix ];
 
   wayland.windowManager.sway = {
@@ -50,17 +49,16 @@ in
 
       gaps.inner = 10;
 
-      bars = [
-        {
-          id = "default";
-          statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml 2> /tmp/i3status-rust.log";
-          colors.focusedWorkspace = with colors.focused; {
-            background = background;
-            border = border;
-            text = text;
-          };
-        }
-      ];
+      bars = [{
+        id = "default";
+        statusCommand =
+          "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config-default.toml 2> /tmp/i3status-rust.log";
+        colors.focusedWorkspace = with colors.focused; {
+          background = background;
+          border = border;
+          text = text;
+        };
+      }];
 
       modes = {
         resize = {
@@ -77,28 +75,30 @@ in
           Return = "mode default";
         };
 
-        "exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]" = {
-          l = "exec swaymsg exit";
-          r = "exec reboot";
-          s = "exec shutdown now";
-          u = "exec systemctl suspend; mode default";
-          h = "exec systemctl hibernate; mode default";
-          k = "exec swaylock; mode default";
+        "exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]" =
+          {
+            l = "exec swaymsg exit";
+            r = "exec reboot";
+            s = "exec shutdown now";
+            u = "exec systemctl suspend; mode default";
+            h = "exec systemctl hibernate; mode default";
+            k = "exec swaylock; mode default";
 
-          Escape = "mode default";
-          Return = "mode default";
-        };
+            Escape = "mode default";
+            Return = "mode default";
+          };
       };
 
       keybindings =
-        let
-          modifier = config.wayland.windowManager.sway.config.modifier;
-        in
-        lib.mkOptionDefault {
-          "XF86AudioRaiseVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
-          "XF86AudioLowerVolume" = "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-";
+        let modifier = config.wayland.windowManager.sway.config.modifier;
+        in lib.mkOptionDefault {
+          "XF86AudioRaiseVolume" =
+            "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+";
+          "XF86AudioLowerVolume" =
+            "exec wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%-";
           "XF86AudioMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "XF86AudioMicMute" = "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          "XF86AudioMicMute" =
+            "exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
           "XF86MonBrightnessUp" = "exec brightnessctl set -e +5%";
           "XF86MonBrightnessDown" = "exec brightnessctl set -e 5%-";
@@ -107,7 +107,8 @@ in
           "${modifier}+Shift+p" = "exec shotman --capture region";
           "${modifier}+Ctrl+p" = "exec shotman --capture output";
 
-          "${modifier}+x" = "mode 'exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]'";
+          "${modifier}+x" =
+            "mode 'exit: [l]ogout, [r]eboot, [s]hutdown, s[u]spend, [h]ibernate, loc[k]'";
         };
 
       defaultWorkspace = "workspace number 1";
@@ -122,7 +123,8 @@ in
   };
 
   services.wpaperd.enable = true;
-  services.wpaperd.settings = builtins.fromTOML (builtins.readFile ./wpaperd.toml);
+  services.wpaperd.settings =
+    builtins.fromTOML (builtins.readFile ./wpaperd.toml);
   #xdg.configFile."wpaperd/config.toml".source = ./wpaperd.toml;
 
   # manage wallpapers according to time
@@ -177,5 +179,12 @@ in
     };
   };
 
-  home.packages = with pkgs; [ swayimg swaybg wl-clipboard shotman sunwait swayidle ];
+  home.packages = with pkgs; [
+    swayimg
+    swaybg
+    wl-clipboard
+    shotman
+    sunwait
+    swayidle
+  ];
 }

@@ -1,10 +1,8 @@
-{ pkgs
-, ...
-}: {
+{ pkgs, ... }: {
   xdg.configFile."nvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/hemthead/kickstart.nvim";
-      rev = "29039cf703a5bdb890942dd006f35e925c226c66";
+      rev = "ef098b82867e650bb2cb3e78216dff41b9a45957";
     };
     recursive = true;
   };

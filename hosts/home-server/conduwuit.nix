@@ -20,8 +20,16 @@
       proxyPass = "http://localhost:6167"; # send matrix requests to conduwuit
     };
     listen = [
-      { addr = "0.0.0.0"; port = 8448; ssl = true; }
-      { addr = "[::0]"; port = 8448; ssl = true; }
+      {
+        addr = "0.0.0.0";
+        port = 8448;
+        ssl = true;
+      }
+      {
+        addr = "[::0]";
+        port = 8448;
+        ssl = true;
+      }
     ];
   };
 }

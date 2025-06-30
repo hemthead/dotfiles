@@ -1,10 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ config
-, pkgs
-, ...
-}: {
+{ config, pkgs, ... }: {
   imports = [
     ../../modules/system.nix # import basic every-config stuff
 
@@ -46,10 +43,7 @@
     configurationLimit = 5;
   };
 
-  boot.binfmt.emulatedSystems = [
-    "x86_64-windows"
-    "aarch64-linux"
-  ];
+  boot.binfmt.emulatedSystems = [ "x86_64-windows" "aarch64-linux" ];
 
   # Configurations for AMDGPU and ROCm setup
 
@@ -64,7 +58,8 @@
   };
 
   # Some programs hard-code the path to HIP
-  systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+  systemd.tmpfiles.rules =
+    [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
 
   hardware.amdgpu = {
     opencl.enable = true;
@@ -110,9 +105,7 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-    ];
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
 
   programs.nix-ld = {
@@ -238,9 +231,7 @@
     ];
   };
 
-  fonts.packages = with pkgs; [
-    comic-relief
-  ];
+  fonts.packages = with pkgs; [ comic-relief ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

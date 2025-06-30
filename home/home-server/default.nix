@@ -17,7 +17,8 @@
 
   programs.home-manager.enable = true;
 
-  home.packages = with pkgs; [
-    # some of these may end up in the common config (likely)
-  ];
+  home.packages = with pkgs;
+    [
+      # some of these may end up in the common config (likely)
+    ];
 }

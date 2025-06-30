@@ -11,7 +11,8 @@
 
     conduwuit = {
       #url = "github:girlbossceo/conduwuit";
-      url = "github:girlbossceo/conduwuit/5b5735f653e1169ebf5eeaa7add51070fd7cd1cc"; # change this when v0.5.0 comes out
+      url =
+        "github:girlbossceo/conduwuit/5b5735f653e1169ebf5eeaa7add51070fd7cd1cc"; # change this when v0.5.0 comes out
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,15 +23,9 @@
   };
 
   outputs =
-    inputs @ { self
-    , nixpkgs
-    , home-manager
-    , conduwuit
-    , zen-browser
-    , ...
-    }: {
+    inputs@{ self, nixpkgs, home-manager, conduwuit, zen-browser, ... }: {
 
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
 
       nixosConfigurations.nixtop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -80,7 +75,12 @@
         system = "x86_64-linux";
 
         modules = [
-          { _module.args = { inherit inputs; inherit conduwuit; }; }
+          {
+            _module.args = {
+              inherit inputs;
+              inherit conduwuit;
+            };
+          }
 
           ./hosts/home-server
 

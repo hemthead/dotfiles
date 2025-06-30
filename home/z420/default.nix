@@ -1,8 +1,5 @@
 { pkgs, ... }: rec {
-  imports = [
-    ../default.nix
-    ./swayidle.nix
-  ];
+  imports = [ ../default.nix ./swayidle.nix ];
 
   home.packages = with pkgs; [
     discord

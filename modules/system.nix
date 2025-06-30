@@ -1,12 +1,10 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-{ pkgs
-, lib
-, ...
-}: {
+{ pkgs, lib, ... }: {
   # get flakes set up from the start this time!
-  nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Set your time zone.
+  nix.settings.experimental-features =
+    [ "nix-command" "flakes" ]; # Set your time zone.
   time.timeZone = "America/New_York"; # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -33,10 +31,7 @@
   services.thermald.enable = true;
   services.tlp.enable = true; # eventually may be replaced with auto-cpufreq
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.dejavu-sans-mono
-    dejavu_fonts
-  ];
+  fonts.packages = with pkgs; [ nerd-fonts.dejavu-sans-mono dejavu_fonts ];
 
   boot.loader.systemd-boot.configurationLimit = 10;
 
@@ -70,7 +65,7 @@
     publish.addresses = true;
   };
 
-  services.udisks2.enable = true; #thonny and other usb stuffs?
+  services.udisks2.enable = true; # thonny and other usb stuffs?
 
   security.pam.services.swaylock = { }; # let swaylock work
 
@@ -137,6 +132,7 @@
     gnumake
     unzip
     zip
+    nixfmt
   ];
 
   programs.appimage.binfmt = true;

@@ -5,15 +5,14 @@
 { config, pkgs, lib, conduwuit, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      #../../modules/system.nix # import basic every-config stuff
+  imports = [
+    # Include the results of the hardware scan.
+    #../../modules/system.nix # import basic every-config stuff
 
-      ./hardware-configuration.nix
-      ./nginx.nix
-      ./conduwuit.nix
-    ];
+    ./hardware-configuration.nix
+    ./nginx.nix
+    ./conduwuit.nix
+  ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -31,10 +30,12 @@
   services.tlp.enable = true; # eventually may be replaced with auto-cpufreq
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true; # i'm fine with systemd-boot here since this is server
+  boot.loader.systemd-boot.enable =
+    true; # i'm fine with systemd-boot here since this is server
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-264fd844-071d-4366-9d55-6de8e7a05712".device = "/dev/disk/by-uuid/264fd844-071d-4366-9d55-6de8e7a05712";
+  boot.initrd.luks.devices."luks-264fd844-071d-4366-9d55-6de8e7a05712".device =
+    "/dev/disk/by-uuid/264fd844-071d-4366-9d55-6de8e7a05712";
   networking.hostName = "home-server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -103,9 +104,7 @@
     enable = true;
 
     maxretry = 5;
-    ignoreIP = [
-      "192.168.1.24"
-    ];
+    ignoreIP = [ "192.168.1.24" ];
     bantime-increment.enable = true;
   };
 
@@ -126,8 +125,7 @@
 
   programs.nix-ld = {
     enable = true;
-    libraries = with pkgs; [
-    ];
+    libraries = with pkgs; [ ];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
