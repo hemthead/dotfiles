@@ -134,6 +134,9 @@
     universal-ctags
     zenith
     clang
+    gnumake
+    unzip
+    zip
   ];
 
   programs.appimage.binfmt = true;

@@ -4,8 +4,12 @@
   xdg.configFile."nvim" = {
     source = builtins.fetchGit {
       url = "https://github.com/hemthead/kickstart.nvim";
-      rev = "fce36d59e4704fe7536a692a1d725801fdcf75a4";
+      rev = "29039cf703a5bdb890942dd006f35e925c226c66";
     };
     recursive = true;
+  };
+
+  home.shellAliases = {
+    "kickstart-nvim" = "NVIM_APPNAME='kickstart-nvim' nvim";
   };
 }
