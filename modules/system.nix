@@ -133,6 +133,7 @@
     unzip
     zip
     nixfmt
+    busybox
   ];
 
   programs.appimage.binfmt = true;
