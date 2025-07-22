@@ -40,7 +40,7 @@
     efiSupport = true;
     device = "nodev";
     useOSProber = true;
-    configurationLimit = 5;
+    configurationLimit = 3;
   };
 
   boot.binfmt.emulatedSystems = [ "x86_64-windows" "aarch64-linux" ];
@@ -105,7 +105,6 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
-    extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
 
   programs.nix-ld = {
@@ -231,7 +230,7 @@
     ];
   };
 
-  fonts.packages = with pkgs; [ comic-relief ];
+  fonts.packages = with pkgs; [ ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

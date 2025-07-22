@@ -2,17 +2,10 @@
   description = "A secure-boot enabled NixOS configuration flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    conduwuit = {
-      #url = "github:girlbossceo/conduwuit";
-      url =
-        "github:girlbossceo/conduwuit/5b5735f653e1169ebf5eeaa7add51070fd7cd1cc"; # change this when v0.5.0 comes out
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -22,80 +15,52 @@
     };
   };
 
-  outputs =
-    inputs@{ self, nixpkgs, home-manager, conduwuit, zen-browser, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, zen-browser, ... }: {
 
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt;
 
-      nixosConfigurations.nixtop = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+    nixosConfigurations.nixtop = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
 
-        modules = [
-          { _module.args = { inherit inputs; }; }
+      modules = [
+        { _module.args = { inherit inputs; }; }
 
-          ./hosts/nixtop
+        ./hosts/nixtop
 
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
 
-              extraSpecialArgs = inputs;
+            extraSpecialArgs = inputs;
 
-              users.johndr = import ./home/nixtop;
-            };
-          }
-        ];
-      };
-
-      nixosConfigurations.z420 = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        modules = [
-          { _module.args = { inherit inputs; }; }
-
-          ./hosts/z420
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-
-              extraSpecialArgs = inputs;
-
-              users.johndr = import ./home/z420;
-            };
-          }
-        ];
-      };
-
-      nixosConfigurations.home-server = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        modules = [
-          {
-            _module.args = {
-              inherit inputs;
-              inherit conduwuit;
-            };
-          }
-
-          ./hosts/home-server
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-
-              extraSpecialArgs = inputs;
-
-              users.johndr = import ./home/home-server;
-            };
-          }
-        ];
-      };
+            users.johndr = import ./home/nixtop;
+          };
+        }
+      ];
     };
+
+    nixosConfigurations.z420 = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      modules = [
+        { _module.args = { inherit inputs; }; }
+
+        ./hosts/z420
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+
+            extraSpecialArgs = inputs;
+
+            users.johndr = import ./home/z420;
+          };
+        }
+      ];
+    };
+  };
 }
