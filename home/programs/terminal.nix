@@ -83,7 +83,10 @@
     enableBashIntegration = true;
   };
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    bashrcExtra = builtins.readFile ./bashrc;
+  };
   home.file.".bashrc".text = ''
     eval "$(direnv hook bash)"
   '';

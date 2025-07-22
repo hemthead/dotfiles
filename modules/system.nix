@@ -115,7 +115,6 @@
     man-pages-posix
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    git
     curl
     vifm
     hyfetch
@@ -140,6 +139,11 @@
 
   # KDE Connect? Wow, this looks awesome!
   programs.kdeconnect.enable = true;
+
+  programs.git = {
+    enable = true;
+    prompt.enable = true;
+  };
 
   # moar man pages
   documentation.dev.enable = true;

@@ -6,6 +6,8 @@
     homeDirectory = "/home/johndr";
 
     stateVersion = "24.11";
+
+    sessionVariables = { NIX_SHELL_PRESERVER_PROMPT = 1; };
   };
 
   programs.home-manager.enable = true;
