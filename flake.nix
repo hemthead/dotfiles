@@ -41,6 +41,28 @@
       ];
     };
 
+    nixosConfigurations.opti = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+
+      modules = [
+        { _module.args = { inherit inputs; }; }
+
+        ./hosts/opti
+
+        home-manager.nixosModules.home-manager
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+
+            extraSpecialArgs = inputs;
+
+            users.johndr = import ./home/opti;
+          };
+        }
+      ];
+    };
+
     nixosConfigurations.z420 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
 
