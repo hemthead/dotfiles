@@ -33,9 +33,10 @@ WHITE='\[\e[0;37m\]'
 BWHITE='\[\e[1;37m\]'
 BGWHITE='\[\e[1;37m\]'
 COLOR_RESET='\[\e[0m\]'
-PROMPT_COMMAND="$PROMPT_COMMAND;_prompt"
+PROMPT_COMMAND="$PROMPT_COMMAND;_prompt;"
 
 function _prompt
 {
-	PS1="\n${BBLUE}\w${COLOR_RESET}$(__git_ps1 " [%s]")\n${BGREEN}\$${COLOR_RESET} "
+	__VENV_THING=${VIRTUAL_ENV_PROMPT+"$VIRTUAL_ENV_PROMPT "}
+	PS1="\n${BYELLOW}${__VENV_THING}${BBLUE}\w${COLOR_RESET}$(__git_ps1 " [%s]")\n${BGREEN}\$${COLOR_RESET} "
 }
